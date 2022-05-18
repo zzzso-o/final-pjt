@@ -1,4 +1,4 @@
-# 2020 Movie Website Project
+# 2022 Movie Website Project
 
 > SSAFY 1학기 최종 프로젝트로 영화 추천 사이트를 구현하는 과정을 README로 작성한다.
 
@@ -9,11 +9,11 @@
 ---
 
 ## Project Period
-2020.11.19 - 2020.11.27
+2022.05.19 - 2022.05.27
 
 ## Contributors
-- 이송영 (팀장)
-- 이민정
+- 이지수 (팀장)
+- 염수홍
 
 ## :exclamation: 시작 전 CHECK_LIST
 
@@ -98,13 +98,13 @@ VUE_APP_SERVER_URL=http://127.0.0.1:8000
 
 ## 1 .팀원 정보 및 업무 분담 내역
 
-### 팀장 : 이송영
-
-- **Vue 클라이언트 구현**
-- front-end
-
-### 팀원 : 이민정
+### 팀장 : 이지수
 
 - **DRS 서버 로직 구현**
 - back-end
 
+
+### 팀원 : 염수홍
+
+- **Vue 클라이언트 구현**
+- front-end
