@@ -8,7 +8,7 @@ from .serializers import MovieSerializer, MovieListSerializer, CommentSerializer
 
 from django.contrib.auth import get_user_model
 
-
+# 홈화면
 def home(requests):
     pass
 
@@ -29,3 +29,4 @@ def movie_detail(requests, movie_pk):
 # 영화 평점 조회
 def movie_comments(requests):
     pass
+
