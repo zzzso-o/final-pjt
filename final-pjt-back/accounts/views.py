@@ -16,7 +16,7 @@ def login(requests):
 def logout(reuqests):
     pass
 
-def porfile(reuqests):
+def profile(reuqests):
     pass
 
 def profile_articles(requests):

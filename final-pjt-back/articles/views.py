@@ -21,8 +21,6 @@ def article_index_create(request):
         return Response(serializer.data)
     
     def article_create():
-        # request.POST => form data만 접근 가능
-        # print(request.data) => form data & raw JSON 모두 접근 가능
         serializer = ArticleSerializer(data=request.data)    
         if serializer.is_valid(raise_exception=True):
             serializer.save()
