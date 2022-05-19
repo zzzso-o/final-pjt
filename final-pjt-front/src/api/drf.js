@@ -22,4 +22,5 @@ export default {
     comment: (articlePk, commentPk) =>
       HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
   },
+
 }
