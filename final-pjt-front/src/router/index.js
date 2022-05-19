@@ -21,6 +21,8 @@ import PopularMovieDetailView from '@/views/PopularMovieDetailView.vue'
 
 Vue.use(VueRouter)
 
+
+
 const routes = [
   {
     path: '/',
