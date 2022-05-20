@@ -34,6 +34,11 @@ const routes = [
     name: 'login',
     component: LoginView
   },
+  // {
+  //   path: '/logout',
+  //   name: 'logout',
+  //   component: LogoutView
+  // },
   {
     path: '/signup',
     name: 'signup',
@@ -41,12 +46,12 @@ const routes = [
   },
 
   {
-    path: '/community',
-    name: 'community',
+    path: '/articles',
+    name: 'articles',
     component: ArticleListView
   },
   {
-    path: '/community/:articlePk',
+    path: '/articles/:articlePk',
     name: 'article',
     component: ArticleDetailView
   },

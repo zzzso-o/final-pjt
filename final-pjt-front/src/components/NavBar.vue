@@ -16,7 +16,7 @@
         <router-link :to="{ name: 'movies' }">Popular Movies</router-link>
       </b-navbar-item>
 			<b-navbar-item>
-        <router-link :to="{ name: 'community' }">Community</router-link>
+        <router-link :to="{ name: 'articles' }">Community</router-link>
       </b-navbar-item>
       <b-navbar-item>
         <router-link :to="{ name: 'mymovie', params: { username } }">MyMovie</router-link>

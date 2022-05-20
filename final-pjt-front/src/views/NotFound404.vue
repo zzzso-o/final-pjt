@@ -12,7 +12,4 @@
 </script>
 
 <style>
-  img.not-found {
-    width: 100%;
-  }
 </style>
