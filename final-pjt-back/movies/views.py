@@ -3,14 +3,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .models import Movie, Comment
+from .models import Movie, MovieComment
 from .serializers import MovieSerializer, MovieListSerializer, CommentSerializer
 
 from django.contrib.auth import get_user_model
 
-# 홈화면
-def home(requests):
-    pass
 
 # 인기영화 리스트 조회(GET)
 @api_view(['GET'])

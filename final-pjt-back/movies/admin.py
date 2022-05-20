@@ -1,13 +1,13 @@
-from django.contrib import admin
-from .models import Movie, Comment
+# from django.contrib import admin
+# from .models import Movie, MovieComment
 
-class MovieAdmin(admin.ModelAdmin):
-    list_display= ['pk', 'title']
-
-
-class CommentAdmin(admin.ModelAdmin):
-  list_display = ['pk', 'content']
+# class MovieAdmin(admin.ModelAdmin):
+#     list_display= ['pk', 'title']
 
 
-admin.site.register(Movie, MovieAdmin)
-admin.site.register(Comment, CommentAdmin)
+# class MovieCommentAdmin(admin.ModelAdmin):
+#   list_display = ['pk', 'content']
+
+
+# admin.site.register(Movie, MovieAdmin)
+# admin.site.register(MovieComment, MovieCommentAdmin)

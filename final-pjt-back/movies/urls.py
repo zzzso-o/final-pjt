@@ -4,9 +4,7 @@ from . import views
 app_name = 'movies'
 
 urlpatterns = [
-    # home화면
-    path('', views.home, name='home'),
-    
+
     # 인기 영화 조회
     path('popularmovies/', views.popular_movies, name='popular_movies'),
     # 인기 영화 상세페이지

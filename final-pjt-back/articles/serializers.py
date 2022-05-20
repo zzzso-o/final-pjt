@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Article, Comment
+from .models import Article, ArticleComment
 
 
 # Article C/R(1)/U
@@ -8,7 +8,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     class CommentListSerializer(serializers.ModelSerializer):
 
         class Meta:
-            model = Comment
+            model = ArticleComment
             fields = ('id', 'content',)
     
     title = serializers.CharField(min_length=2, max_length=100)
@@ -35,6 +35,6 @@ class ArticleListSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     
     class Meta:
-        model = Comment
+        model = ArticleComment
         fields = ('id','content', 'article',)
         read_only_fields = ('article',)

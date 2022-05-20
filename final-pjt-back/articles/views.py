@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Article, Comment
+from .models import Article, ArticleComment
 from .serializers import (
     ArticleSerializer, 
     ArticleListSerializer,
@@ -70,7 +70,7 @@ def comment_create(request, article_pk):
 @api_view(['PUT', 'DELETE',])
 def comment_update_delete(request, article_pk, comment_pk):
     article = get_object_or_404(Article, pk=article_pk)
-    comment = get_object_or_404(Comment, pk=comment_pk)
+    comment = get_object_or_404(ArticleComment, pk=comment_pk)
 
     def comment_update():
         serializer = CommentSerializer(instance=comment, data=request.data)

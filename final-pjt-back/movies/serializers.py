@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Comment
+from .models import Movie, MovieComment
 
 # 전체 영화 조회(GET)
 class MovieListSerializer(serializers.ModelSerializer):
@@ -26,6 +26,6 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_userName(self,obj):
         return obj.user.username
     class Meta:
-        model = Comment
+        model = MovieComment
         fields = ('id', 'userName', 'user', 'comment', 'comment_content', 'created_at',)
         read_only_fields = ('user','comment',)
