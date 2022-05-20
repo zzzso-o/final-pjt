@@ -25,19 +25,14 @@ def signup(request):
         # password는 직렬화되어도 response에서 표현되지 않는다
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+def login(request):
+    pass
+
+def logout(request):
+    pass
+
 @api_view(['POST'])
 def profile(request):
     user = get_object_or_404(get_user_model(), pk=request.data.get('user_id'))
     serializer = UserSerializer(user)
     return Response(serializer.data)
-
-
-
-def profile_articles(requests):
-    pass
-
-def profile_articles_comments(requests):
-    pass
-
-def profile_like_movies(requests):
-    pass
