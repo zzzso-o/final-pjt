@@ -13,7 +13,7 @@ class Movie(models.Model):
     poster_path = models.CharField(max_length=100)
     vote_average = models.FloatField()
     genre = models.ManyToManyField(Genre, related_name='genre')
-    movie_likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movie_likes')
+    movie_likes = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='movie_likes')
     # like : movie M:N 외래키
 
     # def __str__(self):

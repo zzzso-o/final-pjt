@@ -6,7 +6,7 @@ class MovieListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
-        read_only_fields = ('like_user', 'like_movies')
+        read_only_fields = ('like_user', 'movie_likes')
 
 # 상세 영화 조회 (GET)
 class MovieSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
-        read_only_fields = ('like_user', 'like_movies')
+        read_only_fields = ('like_user', 'movie_likes')
 
 
 # 상세 영화 전체 평점 조회(GET)

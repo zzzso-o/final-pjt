@@ -11,7 +11,7 @@
 
 	<h1 class='title'>현재상영작</h1>
 	<!-- v-model="test" -->
-		<b-carousel-list  :data="nowMovies" :items-to-show="5">
+		<!-- <b-carousel-list  :data="nowMovies" :items-to-show="5">
 			<template #item="list">
 				<div class="card">
 					<div class="card-image">
@@ -29,7 +29,17 @@
 					</div>
 				</div>
 			</template>
-		</b-carousel-list>
+		</b-carousel-list> -->
+	<div class="contents">
+		
+
+	</div>
+
+
+
+
+
+
 		<h1 class='title'>회원</h1>
 	</div>
 </template>
