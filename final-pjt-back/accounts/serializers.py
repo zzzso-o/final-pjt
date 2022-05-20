@@ -7,6 +7,15 @@ from movies.models import Movie
 
 User = get_user_model()
 
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    # write_only : 시리얼라이징은 하지만 응답에는 포함시키지 않음
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'password', 'first_name', 'last_name', 'like_movies', 'comments',)
+        read_only_fields = ('like_movies', 'comments',)
+
+
 class ProfileSerializer(serializers.ModelSerializer):
 
     class ArticleSerializer(serializers.ModelSerializer):
