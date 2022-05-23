@@ -17,7 +17,7 @@ def signup(request):
     # Client에서 온 데이터를 받기
     if password != password_confirmation:
     # 패스워드 일치 여부 체크
-        return Response({'error': '비밀번호가 일치하지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': '비밀번호가 일치하지 않습니다!!!!!!!'}, status=status.HTTP_400_BAD_REQUEST)
     serializer = UserSerializer(data=request.data)
     
     # UserSerializer를 통해 데이터 직렬화

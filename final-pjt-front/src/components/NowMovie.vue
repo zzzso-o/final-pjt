@@ -1,13 +1,13 @@
 <template>
   <div>
-		<!-- {{nowMovies}} -->
-		<!-- <div 
-    v-for="movie in nowMovies" :key="movie.id">
 
-			{{movie.title}}
-			{{movie.vote_average}}
-			{{movie.release_date}}
-		</div> -->
+	<div
+		v-for="movie in nowMovies" :key="movie.id">
+
+		{{movie.title}}
+		{{movie.vote_average}}
+		{{movie.release_date}}>
+	</div> 
 
 	<h1 class='title'>현재상영작</h1>
 	<!-- v-model="test" -->
