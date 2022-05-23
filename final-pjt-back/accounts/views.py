@@ -13,7 +13,7 @@ from .serializers import UserSerializer
 @api_view(['POST'])
 def signup(request):
     password = request.data.get('password')
-    password_confirmation = request.data.get('passwordConfirmation')
+    password_confirmation = request.data.get('password2')
     # Client에서 온 데이터를 받기
     if password != password_confirmation:
     # 패스워드 일치 여부 체크

@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     # write_only : 시리얼라이징은 하지만 응답에는 포함시키지 않음
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', )
+        fields = ('username', 'password')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
