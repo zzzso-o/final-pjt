@@ -2042,10 +2042,10 @@
     "node-releases" "^2.0.3"
     "picocolors" "^1.0.0"
 
-"buefy@^0.9.20":
-  "integrity" "sha512-lEJTLZEuN7dI6XUGq6N5oL691ncHV8Zu9WtyBsQTOlcBjCJkSUXKicorPukS0wQi0z3w+pOl/e/FTCVswJj3Ng=="
-  "resolved" "https://registry.npmjs.org/buefy/-/buefy-0.9.20.tgz"
-  "version" "0.9.20"
+"buefy@^0.9.21":
+  "integrity" "sha512-geOJgzi5jFDyRJ9Zl0379yyRBatZ6Qg83kRnCJTb7/nCuXcfXd/eis3tFaDTGuntnfv2MezHzc092OIHwgRwAg=="
+  "resolved" "https://registry.npmjs.org/buefy/-/buefy-0.9.21.tgz"
+  "version" "0.9.21"
   dependencies:
     "bulma" "0.9.3"
 

@@ -30,16 +30,8 @@
 				</div>
 			</template>
 		</b-carousel-list> -->
-	<div class="contents">
 		
-
-	</div>
-
-
-
-
-
-
+	
 		<h1 class='title'>회원</h1>
 	</div>
 </template>

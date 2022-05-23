@@ -89,7 +89,7 @@ const routes = [
     component: PopularMovieListView
   },
   {
-    path: '/popular/:moviePk',
+    path: '/popular/:movieId',
     name: 'movie',
     component: PopularMovieDetailView
   },
