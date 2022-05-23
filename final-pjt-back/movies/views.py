@@ -23,7 +23,35 @@ def movie_detail(requests, movie_pk):
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
 
-# 영화 평점 조회
-def movie_comments(requests):
-    pass
 
+# 영화 평점 생성(POST)
+@api_view(['POST',])
+def movie_comment_create(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(article=article)
+        return Response(serializer.data)
+
+
+# 영화 평점 수정, 삭제(PUT, DELETE)
+@api_view(['PUT', 'DELETE',])
+def movie_comment_update_delete(request, movie_pk, comment_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    comment = get_object_or_404(MovieComment, pk=comment_pk)
+
+    def movie_comment_update():
+        serializer = CommentSerializer(instance=comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+    def movie_comment_delete():
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    if request.method == 'PUT':
+        return movie_comment_update()
+    elif request.method == 'DELETE':
+        return movie_comment_delete()

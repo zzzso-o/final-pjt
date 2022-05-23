@@ -30,12 +30,12 @@
       <div class="buttons">
 
 
-      <!-- <b-navbar-item tag="div" v-if="!isLoggedIn"> -->
+      <b-navbar-item tag="div" v-if="!isLoggedIn">
         <router-link :to="{ name: 'login' }" class="button is-primary"><strong>Login</strong></router-link>
-      <!-- </b-navbar-item> -->
-      <!-- <b-navbar-item v-if="!isLoggedIn"> -->
+      </b-navbar-item>
+      <b-navbar-item v-if="!isLoggedIn">
         <router-link :to="{ name: 'signup' }" class="button is-light">Signup</router-link>
-      <!-- </b-navbar-item> -->
+      </b-navbar-item>
 
       </div>
       </b-navbar-item>
