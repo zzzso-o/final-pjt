@@ -110,3 +110,15 @@ Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnp
 
 -----
 세상에 반복문을 통해서 아이템을 여러개 출력하려고하는데 그게 안된다 
+
+
+-----
+data 는 함수형태여야한다. 
+반환된 데이터 개체의 독립적인 복사본을 유지할 수 있도록
+
+
+-----
+"TypeError: Invalid attempt to iterate non-iterable instance.
+vue.runtime.esm.js?c320:1897 TypeError: Invalid attempt to iterate non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.
+이런 에러가 뜨는데 뭔가 타입 설정을 잘못해준거 같긴한데 뭔지 모르겠다. 

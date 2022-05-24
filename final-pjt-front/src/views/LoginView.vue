@@ -6,9 +6,8 @@
 
     <form @submit.prevent="login(credentials)" class ="box c"  >
       <section class="">
-
       <b-field label="ID" type="is-success" 
-      :label-position="labelPosition"
+
       message="The ID is available"  >
         <input v-model="credentials.username" 
         placeholder="enter your ID" id="username" required />
@@ -42,7 +41,6 @@
         credentials: {
           username: '',
           password: '',
-          labelPosition: 'on-border'
           
         }
       }

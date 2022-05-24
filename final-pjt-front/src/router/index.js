@@ -11,7 +11,6 @@ import ArticleListView from '@/views/ArticleListView.vue'
 import ArticleDetailView from '@/views/ArticleDetailView.vue'
 
 import MyMovieView from '@/views/MyMovieView.vue'
-import MyMovieRecommendView from '@/views/MyMovieRecommendView.vue'
 import MyArticlesView from '@/views/MyArticlesView.vue'
 import MyCommentsView from '@/views/MyCommentsView.vue'
 import MyUserScoreView from '@/views/MyUserScoreView.vue'
@@ -61,11 +60,6 @@ const routes = [
     path: '/mymovie/:username',
     name: 'mymovie',
     component: MyMovieView
-  },
-  {
-    path: '/mymovie/recommend/:username',
-    name: 'myrecommend',
-    component: MyMovieRecommendView 
   },
   {
     path: '/mymovie/myarticles/:username',
