@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 
     # DRF auth
     'dj_rest_auth', # signup 제외 auth 관련 담당
+    'dj_rest_auth.registration',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
