@@ -27,11 +27,11 @@ def movie_detail(requests, movie_pk):
 # 영화 평점 생성(POST)
 @api_view(['POST',])
 def movie_comment_create(request, article_pk):
-    article = get_object_or_404(Article, pk=article_pk)
+    movie = get_object_or_404(Movie, pk=article_pk)
 
     serializer = CommentSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
-        serializer.save(article=article)
+        serializer.save(movie=movie)
         return Response(serializer.data)
 
 
