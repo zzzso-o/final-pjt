@@ -1,14 +1,13 @@
-from django.shortcuts import get_object_or_404
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+# from django.shortcuts import get_object_or_404
+# from rest_framework import status
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
 
-from rest_framework.decorators import authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+# from rest_framework.decorators import authentication_classes, permission_classes
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 from django.contrib.auth import get_user_model
-from .serializers import UserSerializer
 
 
 User = get_user_model()
@@ -33,8 +32,8 @@ User = get_user_model()
 #         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET'])
-def profile(request, username):
-    user = get_object_or_404(User, username=username)
-    serializer = UserSerializer(user)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def profile(request, username):
+#     user = get_object_or_404(User, username=username)
+#     serializer = UserSerializer(user)
+#     return Response(serializer.data)
