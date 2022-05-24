@@ -1,22 +1,24 @@
 <template>
-  <div>
+  <div class=container>
 		<h1 class='title'>POPULAR MOVIES</h1>
 		
+
 		<div class="columns">
+		<div class="rows">
 		<div 
     v-for="movie in popularMovies" :key="movie.id">
-		<!-- {{movie.title}}
 
-		{{movie.release_date}}
-		{{movie.vote_average}} -->
-		
-		
 		<div class="card column">
+			
 			<div class="card-image">
-				<figure class="image ">
+				
+				<figure class="image">
+				<router-link :to="`/pouplar/${movie.id}`">
 				<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" class=" is-128x128">
+				</router-link>
 				</figure>
 			</div>
+			
 			<div class="card-content">
 				<div class="media">
 				<div class="media-content">
@@ -36,31 +38,13 @@
 
 			</footer>
 		</div>
-
+		</div>
 		</div>
 
 
 
 		</div>
 
-		<template>
-		<section>
-			<b-pagination
-					:total="total"
-					v-model="current"
-					:range-before="rangeBefore"
-					:range-after="rangeAfter"
-					:order="order"
-					:size="size"
-					:simple="isSimple"
-					:rounded="isRounded"
-					:per-page="perPage"
-					:page-input="hasInput"
-					:page-input-position="inputPosition"
-					:debounce-page-input="inputDebounce">
-			</b-pagination>
-    </section>
-		</template>
   </div>
 	
 </template>
@@ -71,9 +55,9 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
 	data() {
 		return {
-				total: 100,
-				current: 5,
-				perPage: 20,
+				items : [],
+				current:1,
+				perPage:12,
 				rangeBefore: 5,
 				rangeAfter: 5,
 				order: 'is-centered',
@@ -87,7 +71,14 @@ export default {
 		}
 	},
 	computed: {
-    ...mapGetters(['popularMovies'])
+    ...mapGetters(['popularMovies']),
+		// total(){
+		// 	return this.$store.getters['popularMovies'].length
+		// },
+		// paginatedItems(){
+		// 	let page_number = this.current-1
+		// 	return this.$store.getters['popularMovies'].slice(page_number * this.perPage, (page_number+1) * this.perPage)
+		// }
   },
 
 	methods:{
@@ -95,13 +86,18 @@ export default {
 	},
 	created(){
 		this.fetchPopularMovies()
-		
+		// this.items.push('popularMovies')		
 	}
+
 	
 }
 
 </script>
 	
 <style>
+.rows{
+    display: flex;
+    flex-direction: column;
+}
 	
 </style>

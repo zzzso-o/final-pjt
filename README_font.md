@@ -50,8 +50,10 @@ router 설치하려고했더니
   run `npm fund` for details
 이라고 말하면서 돈낼 수 있는 링크를 보여줬다.
 npm config set fund false --global 을 통해서 fund기능을 꺼주고 다시 
+=> mac : npm install --no-fund
 npm i vue-router --legacy-peer-deps
 npm add router 
+
 그리고 history mode를 사용하기로함
 
 vue cli 버전이 
@@ -98,3 +100,13 @@ node.js의 미들웨어 CORS를 추가해주었다.
 tmdb get latest로 변경
 => latest movie가 존재하지 않아서 계속 404 not found가 발생함
 => now_playing으로 변경 
+
+
+
+-----
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/local/bin/pnpm'
+Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/local/bin/pnpm'
+
+
+-----
+세상에 반복문을 통해서 아이템을 여러개 출력하려고하는데 그게 안된다 

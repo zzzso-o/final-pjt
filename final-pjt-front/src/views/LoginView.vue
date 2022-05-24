@@ -1,21 +1,29 @@
 <template>
-  <div>
-    <h1>Login</h1>
+  <div class="container">
+    <h1 class=title>Login</h1>
 
     <account-error-list v-if="authError"></account-error-list>
 
-    <form @submit.prevent="login(credentials)">
-      <div>
-        <label for="username">🧍‍♂️: </label>
-        <input v-model="credentials.username" type="text" id="username" required />
-      </div>
+    <form @submit.prevent="login(credentials)" class ="box c"  >
+      <section class="">
 
-      <div>
-        <label for="password">👀: </label>
-        <input v-model="credentials.password" type="password" id="password" required />
-      </div>
+      <b-field label="ID" type="is-success" 
+      :label-position="labelPosition"
+      message="The ID is available"  >
+        <input v-model="credentials.username" 
+        placeholder="enter your ID" id="username" required />
+      </b-field>
 
-      <button>Login</button>
+      <b-field label="PW" type="is-success" 
+      message="The password is available" >
+        <input v-model="credentials.password" type="password" 
+        placeholder="enter your PW"  id="password" required password-reveral />
+      </b-field>
+      
+      <div class = "buttons">
+      <b-button type="is-primary" > Login </b-button>
+      </div>
+      </section>
     </form>
   </div>
 </template>
@@ -34,6 +42,8 @@
         credentials: {
           username: '',
           password: '',
+          labelPosition: 'on-border'
+          
         }
       }
     },
@@ -46,4 +56,12 @@
   }
 </script>
 
-<style></style>
+<style>
+  .container {
+    width: 750px;
+  }
+
+
+
+
+</style>
