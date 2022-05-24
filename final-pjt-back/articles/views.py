@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.db.models import Count
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -16,12 +17,15 @@ from articles import serializers
 def article_index_create(request):
     
     def article_index():
-        articles = Article.objects.all()
+        articles = Article.objects.annotate(
+            comment_count = Count('comments', distinct=True),
+            like_count = Count('like_users', distinct=True)
+        ).order_by('-pk')
         serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
     
     def article_create():
-        serializer = ArticleSerializer(data=request.data)    
+        serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)

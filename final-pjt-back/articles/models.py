@@ -4,7 +4,7 @@ from django.conf import settings
 
 class Article(models.Model):
     article_title = models.CharField(max_length=50)
-    ariticle_content = models.TextField()
+    article_content = models.TextField()
     article_created_at = models.DateTimeField(auto_now_add=True)
     article_updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
