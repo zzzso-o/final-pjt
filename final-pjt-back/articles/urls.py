@@ -7,6 +7,7 @@ app_name = 'articles'
 urlpatterns = [
     path('', views.article_index_create),
     path('<int:article_pk>/', views.article_detail_update_delete),
+    path('<int:article_pk>/like/', views.like_article),
 
     # POST / articles/1/comments/ => 1번글에 댓글달기
     # GET / articles/1/comments/ = > 1번 글의 모든댓글

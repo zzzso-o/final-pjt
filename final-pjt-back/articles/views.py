@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Count
 
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
-from rest_framework.decorators import api_view, permission_classes, authentication_classes
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from rest_framework import status
@@ -73,6 +73,22 @@ def article_detail_update_delete(request, article_pk):
         if request.user == article.user:
             return article_delete()
 
+
+@api_view(['POST'])
+def like_article(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    user = request.user
+    if article.like_users.filter(pk=user.pk).exists():
+        article.like_users.remove(user)
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+    else:
+        article.like_users.add(user)
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+
+
+
 @api_view(['POST',])
 def comment_create(request, article_pk):
     user = request.user
@@ -81,7 +97,9 @@ def comment_create(request, article_pk):
     serializer = CommentSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(article=article, user=request.user)
-        return Response(serializer.data)
+        comments = article.comments.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['PUT', 'DELETE',])
 def comment_update_delete(request, article_pk, comment_pk):

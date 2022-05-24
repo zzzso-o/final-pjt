@@ -37,3 +37,17 @@ from movies.models import Movie
 #         model = User
 #         fields = ('pk', 'username', 'like_articles', 'articles', 'comments')
 
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class ArticleSerializer(serializers.ModelSerializer):
+        
+        class Meta:
+            model = Article
+            fields = ('pk', 'title', 'content')
+
+    like_articles = ArticleSerializer(many=True)
+    articles = ArticleSerializer(many=True)
+
+    class Meta:
+        model = get_user_model()
+        fields = ('pk', 'username', 'email', 'like_articles', 'articles',)
