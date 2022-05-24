@@ -2,9 +2,9 @@ from rest_framework import serializers
 from .models import Article, ArticleComment
 
 
-# Article C/R(1)/U
+
 class ArticleSerializer(serializers.ModelSerializer):
-    # Comment R(all)
+    
     class CommentListSerializer(serializers.ModelSerializer):
 
         class Meta:
@@ -22,7 +22,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         read_only_fields = ('comments', 'article_created_at', 'article_updated_at')
         
 
-# Article R(all)
+
 class ArticleListSerializer(serializers.ModelSerializer):
 
     comment_count = serializers.IntegerField(source='comments.count', read_only=True)
@@ -32,7 +32,7 @@ class ArticleListSerializer(serializers.ModelSerializer):
         model = Article
         fields = ('id', 'article_title', 'comment_count')
 
-# Comment C/U
+
 class CommentSerializer(serializers.ModelSerializer):
     
     class Meta:

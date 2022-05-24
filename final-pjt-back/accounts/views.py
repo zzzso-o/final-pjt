@@ -10,7 +10,7 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 
-<<<<<<< HEAD
+
 User = get_user_model()
 
 # @api_view(['POST'])
@@ -22,18 +22,6 @@ User = get_user_model()
 #     # 패스워드 일치 여부 체크
 #         return Response({'error': '비밀번호가 일치하지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
 #     serializer = UserSerializer(data=request.data)
-=======
-@api_view(['POST'])
-def signup(request):
-    password = request.data.get('password')
-    password_confirmation = request.data.get('password2')
-    # Client에서 온 데이터를 받기
-    if password != password_confirmation:
-    # 패스워드 일치 여부 체크
-        return Response({'error': '비밀번호가 일치하지 않습니다!!!!!!!'}, status=status.HTTP_400_BAD_REQUEST)
-    serializer = UserSerializer(data=request.data)
->>>>>>> df39ea24a9de8f368024c17405ecba9be396172a
-    
 #     # UserSerializer를 통해 데이터 직렬화
 #     if serializer.is_valid(raise_exception=True):
 #     # 유효성 검사(비밀번호도 직렬화)
