@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Home</h1>
+  <div class="container">
+    <h1 class="title">COMMUNITY</h1>
     <ul>
       <router-link 
         :to="{ name: 'articleNew' }">
@@ -30,7 +30,8 @@
   export default {
     name: 'ArticleList',
     computed: {
-      ...mapGetters(['articles'])
+      ...mapGetters(['articles']),
+      ...mapGetters(['currentUser']),
     },
     methods: {
       ...mapActions(['fetchArticles'])

@@ -37,21 +37,20 @@ export default {
         commit('SET_TOKEN', '') // commit으로 mutations에 접근 , state에 token 삭제 
         localStorage.setItem('token', '') // localStorage에 token 삭제
       },
-  
+
       login({ commit, dispatch }, credentials) {
         axios({
-          url: drf.accounts.login(), //사용자 입력정보 login url로 내보내기
+          url: drf.accounts.login(),
           method: 'post',
           data: credentials
         })
-          .then(res => { // 성공시에 
-            const token = res.data.key // 토큰에 응답 키 저장
-            dispatch('saveToken', token) 
-            // saveToken actions => SET_TOKEN mutations로 state, 로컬스토리지에 token저장 
-            dispatch('fetchCurrentUser') // 현재 사용자 정보 받아오기 actions 실행
-            router.push({ name: 'home' }) // 메인페이지로 이동
+          .then(res => {
+            const token = res.data.key
+            dispatch('saveToken', token)
+            dispatch('fetchCurrentUser')
+            router.push({ name: 'articles' })
           })
-          .catch(err => { // 실패시 에러메시지
+          .catch(err => {
             console.error(err.response.data)
             commit('SET_AUTH_ERROR', err.response.data)
           })
@@ -67,7 +66,7 @@ export default {
             const token = res.data.key
             dispatch('saveToken', token)
             dispatch('fetchCurrentUser')
-            router.push({ name: 'home' })
+            router.push({ name: 'articles' })
           })
           .catch(err => {
             console.error(err.response.data)
@@ -85,8 +84,7 @@ export default {
           .then(() => {
             dispatch('removeToken')
             // alert('성공적으로 logout!')
-
-            router.push({ name: 'home' })
+            router.push({ name: 'login' })
           })
           .error(err => {
             console.error(err.response)
