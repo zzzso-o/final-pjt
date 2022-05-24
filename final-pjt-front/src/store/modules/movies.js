@@ -31,12 +31,15 @@ export default {
 		popularMovies: state => state.popularMovies,
 		nowMovies: state => state.nowMovies,
 		searchMovies: state => state.searchMovies,
+
+
 	},
 	
 	mutations: {
 		SET_POPULAR_MOVIES:(state, popularMovies) => state.popularMovies = popularMovies,
 		SET_NOW_MOVIES:(state, nowMovies) => state.nowMovies = nowMovies,
-		SET_SEARCH_MOVIES:(state, searchMovies) => state.searchMovies = searchMovies
+		SET_SEARCH_MOVIES:(state, searchMovies) => state.searchMovies = searchMovies,
+
 	},
 
 	actions: {
@@ -75,6 +78,8 @@ export default {
 					console.error(err.response.data)
 			})
 		},
+
+		// 네이버 영화 검색 
 
 		// fetchSearchMovies({ commit }){
 		// 	axios.get(`${SEARCH_URL}`,{

@@ -11,7 +11,7 @@ from .serializers import (
     ArticleListSerializer,
     CommentSerializer,
 )
-from articles import serializers
+# from articles import serializers
 
 @api_view(['GET', 'POST'])
 def article_index_create(request):

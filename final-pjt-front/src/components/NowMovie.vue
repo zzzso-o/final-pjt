@@ -3,7 +3,6 @@
 
 	<div
 		v-for="movie in nowMovies" :key="movie.id">
-
 		{{movie.title}}
 		{{movie.vote_average}}
 		{{movie.release_date}}>

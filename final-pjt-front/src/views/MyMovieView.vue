@@ -1,12 +1,15 @@
 <template>
   <div>
-      dd
+    <movie-recommend></movie-recommend>
   </div>
 </template>
 
 <script>
+import MovieRecommend from '../components/MovieRecommend.vue'
 export default {
-
+  components:{
+    MovieRecommend
+  }
 }
 </script>
 
