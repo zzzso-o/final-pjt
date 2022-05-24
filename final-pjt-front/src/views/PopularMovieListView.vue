@@ -1,24 +1,20 @@
 <template>
   <div class="container">
 		<h1 class="title">POPULAR MOVIES</h1>
-
 		<div class="row">
-			<div v-for="movie in popularMovies" :key="movie.id" class="card col-4">
+			<div v-for="movie in popularMovies" :key="movie.id" class="card col-3">
 				<div class="card-image">
 					<figure class="image">
-						<router-link :to="`/pouplar/${movie.id}`">
+						<router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
 							<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" class=" is-128x128">
 						</router-link>
 					</figure>
 				</div>
 				<div class="card-content">
 					<div class="media">
-						<div class="media-content">
-							<p class="title is-5">{{movie.title}}</p>
-						</div>
+						<p class="title is-5">{{ movie.title }}</p>
 					</div>
-					<br>
-					<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+					<p>{{ movie.release_date }}</p>
 				</div>
 				<footer class="card-footer">
 					<p class="card-footer-item">
@@ -79,9 +75,6 @@ export default {
 </script>
 	
 <style>
-.rows{
-    display: flex;
-    flex-direction: column;
-}
+
 	
 </style>

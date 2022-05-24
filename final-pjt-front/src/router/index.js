@@ -9,6 +9,9 @@ import SignupView from '@/views/SignupView.vue'
 
 import ArticleListView from '@/views/ArticleListView.vue'
 import ArticleDetailView from '@/views/ArticleDetailView.vue'
+import ArticleNewView from '@/views/ArticleNewView'
+import ArticleEditView from '@/views/ArticleEditView'
+
 
 import MyMovieView from '@/views/MyMovieView.vue'
 import MyArticlesView from '@/views/MyArticlesView.vue'
@@ -50,6 +53,17 @@ const routes = [
     name: 'articles',
     component: ArticleListView
   },
+  {
+    path: '/articles/new',
+    name: 'articleNew',
+    component: ArticleNewView
+  },
+  {
+    path: '/articles/:articlePk/edit',
+    name: 'articleEdit',
+    component: ArticleEditView
+  },
+
   {
     path: '/articles/:articlePk',
     name: 'article',

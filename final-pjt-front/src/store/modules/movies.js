@@ -1,7 +1,7 @@
 // import router from '@/router'
 import axios from 'axios'
 // import drf from '@/api/drf'
-
+const API_DETAIL_URL = 'https://api.themoviedb.org/3/movie'
 const API_URL = 'https://api.themoviedb.org/3/movie/popular'
 const API_KEY = 'bd2e2aed22ef7bc837f34ff1cf7ef434'
 
@@ -22,21 +22,22 @@ export default {
 	// state는 직접 접근
 	state: {
 		popularMovies: {}, 
+		popularMovie :{},
 		nowMovies: {},
-		searchMovies: {}
+		searchMovies: {},
 		
 	},
 	// state는 getters 를 통해서 접근
 	getters: {
 		popularMovies: state => state.popularMovies,
+		popularMovie: state => state.popularMovie,
 		nowMovies: state => state.nowMovies,
 		searchMovies: state => state.searchMovies,
-
-
 	},
 	
 	mutations: {
 		SET_POPULAR_MOVIES:(state, popularMovies) => state.popularMovies = popularMovies,
+		SET_POPULAR_MOVIE:(state, popularMovie) => state.popularMovie = popularMovie,
 		SET_NOW_MOVIES:(state, nowMovies) => state.nowMovies = nowMovies,
 		SET_SEARCH_MOVIES:(state, searchMovies) => state.searchMovies = searchMovies,
 
@@ -65,6 +66,18 @@ export default {
 			)
 			.catch(err => { // 실패시 에러메시지
 					console.error(err.response.data)
+			})
+		},
+
+		fetchPopularMoive({ commit }, moviePk){
+			
+			axios
+			.get(`${API_DETAIL_URL}/${moviePk}?api_key=${API_KEY}&language=ko`)
+			.then(res => { // 성공시에 
+				commit('SET_POPULAR_MOVIE', res.data)
+			})
+			.catch(err => { 
+				console.error(err.response.data)
 			})
 		},
 

@@ -33,8 +33,6 @@
   import { mapGetters, mapActions } from 'vuex'
   import CommentList from '@/components/CommentList.vue'
 
-
-
   export default {
     name: 'ArticleDetail',
     components: { CommentList },
@@ -61,5 +59,4 @@
     },
   }
 </script>
-
 <style></style>

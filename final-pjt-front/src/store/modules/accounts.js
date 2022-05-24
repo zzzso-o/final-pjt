@@ -84,13 +84,15 @@ export default {
         })
           .then(() => {
             dispatch('removeToken')
-            alert('성공적으로 logout!')
+            // alert('성공적으로 logout!')
+
             router.push({ name: 'home' })
           })
           .error(err => {
             console.error(err.response)
           })
       },
+
   
       fetchCurrentUser({ commit, getters, dispatch }) {
         if (getters.isLoggedIn) { // 이미 사용자가 로그인 했다면, 토큰이 있다면 

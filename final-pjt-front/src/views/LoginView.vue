@@ -4,26 +4,40 @@
 
     <account-error-list v-if="authError"></account-error-list>
 
-    <form @submit.prevent="login(credentials)" class ="box c"  >
-      <section class="">
-      <b-field label="ID" type="is-success" 
+    <!-- <form @submit.prevent="login(credentials)" class ="box">
+      <section>
+        <b-field label="ID" type="is-success" 
+          message="The ID is available"  >
+            <input v-model="credentials.username" 
+            placeholder="enter your ID" id="username" required/>
+        </b-field>
 
-      message="The ID is available"  >
-        <input v-model="credentials.username" 
-        placeholder="enter your ID" id="username" required />
-      </b-field>
-
-      <b-field label="PW" type="is-success" 
-      message="The password is available" >
-        <input v-model="credentials.password" type="password" 
-        placeholder="enter your PW"  id="password" required password-reveral />
-      </b-field>
-      
-      <div class = "buttons">
-      <b-button type="is-primary" > Login </b-button>
-      </div>
+        <b-field label="PW" type="is-success" 
+        message="The password is available" >
+          <input v-model="credentials.password" type="password" 
+          placeholder="enter your PW"  id="password" required />
+        </b-field>
+        
+        <div class = "buttons">
+        <b-button type="is-primary" > Login </b-button>
+        </div>
       </section>
+    </form> -->
+    <form @submit.prevent="login(credentials)">
+      <div>
+        <label for="username">username: </label>
+        <input v-model="credentials.username" type="text" id="username" required />
+      </div>
+
+      <div>
+        <label for="password">password: </label>
+        <input v-model="credentials.password" type="password" id="password" required />
+      </div>
+
+      <button>Login</button>
     </form>
+
+
   </div>
 </template>
 
@@ -41,7 +55,6 @@
         credentials: {
           username: '',
           password: '',
-          
         }
       }
     },
@@ -58,8 +71,4 @@
   .container {
     width: 750px;
   }
-
-
-
-
 </style>

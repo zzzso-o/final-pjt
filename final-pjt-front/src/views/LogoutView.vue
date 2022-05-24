@@ -8,8 +8,14 @@
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
+    data() {
+      return {
+          indefinteToast: null
+      }
+    },
     methods: {
-      ...mapActions(['logout'])
+      ...mapActions(['logout']),
+
     },
     computed: {
       ...mapGetters(['isLoggedIn'])
@@ -22,6 +28,7 @@
         this.$router.back()
       }
     },
+    
   }
 </script>
 
