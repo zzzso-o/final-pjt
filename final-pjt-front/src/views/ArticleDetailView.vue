@@ -1,5 +1,10 @@
 <template>
   <div class="container box">
+    {{article}}
+    
+    {{ article.article_comments }}
+    {{ article.comments }}
+
     <div class="titlecontainer">
       <strong>{{ article.article_title }}</strong>
       <div class="article-info">
@@ -24,16 +29,17 @@
       |
       <button @click="deleteArticle(articlePk)">Delete</button>
     </div>
-    <div>
+    <!-- <div>
       Likeit:
       <button
         @click="likeArticle(articlePk)"
       >{{ article.article_likes }}</button>
-    </div>
+    </div> -->
     </div>
     <hr />
     <!-- Comment UI -->
-    <comment-list :comments="article.article_comment_comments"></comment-list>
+    {{ article.articlecomments }}
+    <comment-list :articlecomments="article.articlecomments">dd</comment-list>
 
   </div>
 </template>
@@ -52,9 +58,9 @@
     },
     computed: {
       ...mapGetters(['isAuthor', 'article']),
-      likeCount() {
-        return this.article.like_users?.length
-      }
+      // likeCount() {
+      //   return this.article.article_likes?.length
+      // }
     },
     methods: {
       ...mapActions([

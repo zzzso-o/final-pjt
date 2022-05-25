@@ -89,7 +89,7 @@ def like_article(request, article_pk):
 
 @api_view(['POST',])
 def comment_create(request, article_pk):
-    user = request.user
+    # user = request.user
     article = get_object_or_404(Article, pk=article_pk)
 
     serializer = CommentSerializer(data=request.data)

@@ -24,7 +24,7 @@ export default {
   mutations: {
     SET_ARTICLES: (state, articles) => state.articles = articles,
     SET_ARTICLE: (state, article) => state.article = article,
-    SET_ARTICLE_COMMENTS: (state, comments) => (state.article.comments = comments),
+    SET_ARTICLE_COMMENTS: (state, articlecomment) => (state.article.articlecomment = articlecomment),
   },
 
   actions: {
@@ -114,7 +114,7 @@ export default {
       const comment = { article_comment_content }
 
       axios({
-        url: drf.articles.comments(articlePk),
+        url: drf.articles.articlecomments(articlePk),
         method: 'post',
         data: comment,
         headers: getters.authHeader,

@@ -1,10 +1,7 @@
 <template>
-  <li class="comment-list-item">
+  <li>
     {{comment}}
-    <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
-      {{ comment.user.username }}
-    </router-link>: 
-
+    {{ comment.user.username }}
     <span v-if="!isEditing">{{ payload.article_comment_content }}</span>
 
     <span v-if="isEditing">
@@ -17,7 +14,9 @@
       <button @click="switchIsEditing">Edit</button> |
       <button @click="deleteComment(payload)">Delete</button>
     </span>
+      ddddd
   </li>
+
 </template>
 
 <script>
@@ -32,7 +31,7 @@ export default {
       payload: {
         articlePk: this.comment.article,
         commentPk: this.comment.pk,
-        article_comment_content: this.comment.article_comment_content
+        article_comment_content: this.articlecomment.article_comment_content
       },
     }
   },
@@ -54,8 +53,5 @@ export default {
 </script>
 
 <style>
-.comment-list-item {
-  border: 1px solid green;
 
-}
 </style>

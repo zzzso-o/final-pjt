@@ -18,8 +18,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ArticleComment
-        fields = ('pk', 'user', 'article_comment_content', 'article', 'article_comment_created_at', 'article_comment_updated_at')
-        read_only_fields = ('article', 'article_comment_created_at', 'article_comment_updated_at')
+        fields = ('pk', 'user', 'article_comment_content', 'article','article_comment_created_at','article_comment_updated_at')
+        read_only_fields = ('article', )
 
 
 
@@ -29,6 +29,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         class Meta:
             model = User
             fields = ('pk', 'username')
+
 
     article_comments = CommentSerializer(many=True, read_only=True)
     user = UserSerializer(read_only=True)

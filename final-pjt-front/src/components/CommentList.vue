@@ -4,7 +4,7 @@
     <ul>
 
       <comment-list-item 
-        v-for="comment in comments" 
+        v-for="comment in articlecomments" 
         :comment="comment" 
         :key="comment.pk">
       </comment-list-item>        
@@ -24,7 +24,7 @@ import CommentListForm from '@/components/CommentListForm.vue'
 export default {
   name: 'CommentList',
   components: { CommentListForm, CommentListItem },
-  props: { comments: Array },
+  props: { articlecomments: Array },
 }
 </script>
 
