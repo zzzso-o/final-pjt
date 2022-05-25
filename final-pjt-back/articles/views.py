@@ -1,8 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Count
 
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
