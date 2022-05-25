@@ -17,9 +17,7 @@
         <b-navbar-item>
           <router-link :to="{ name: 'articles' }"><strong>Community</strong></router-link>
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <img src="@/assets/meta.png" >
-        </b-navbar-item>
+
         </template>
       
         <template #end>

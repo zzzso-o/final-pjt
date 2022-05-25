@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="title">새 글 작성</h1>
+  <div >
+    <!-- <h1 class="title">새 글 작성</h1>
     <div class="box">
       <form @submit.prevent="onSubmit">
         <div>
@@ -17,12 +17,27 @@
           <button>{{ action }}</button>
         </div>
       </form>
+    </div> -->
+  <form @submit.prevent="onSubmit">
+    <div>
+      <label for="title">title: </label>
+      <input v-model="newArticle.article_title" type="text" id="article_title" />
     </div>
+    <div>
+      <label for="content">contnet: </label>
+      <textarea v-model="newArticle.article_content" type="text" id="article_content"></textarea>
+    </div>
+    <div>
+      <button>{{ action }}</button>
+    </div>
+  </form>
+
+
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
   export default {
     name: 'ArticleForm',
@@ -33,13 +48,10 @@ import { mapActions, mapGetters } from 'vuex'
     data() {
       return {
         newArticle: {
-          title: this.article.title,
-          content: this.article.content,
+          article_title: this.article.article_title,
+          article_content: this.article.article_content,
         }
       }
-    },
-    computed:{
-      ...mapGetters(['currentUser']),
     },
 
     methods: {
@@ -57,6 +69,7 @@ import { mapActions, mapGetters } from 'vuex'
       },
     },
   }
+
 </script>
 
 <style></style>
