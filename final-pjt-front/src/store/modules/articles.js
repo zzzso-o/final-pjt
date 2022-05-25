@@ -24,7 +24,7 @@ export default {
   mutations: {
     SET_ARTICLES: (state, articles) => state.articles = articles,
     SET_ARTICLE: (state, article) => state.article = article,
-    SET_ARTICLE_COMMENTS: (state, articlecomment) => (state.article.articlecomment = articlecomment),
+    SET_ARTICLE_COMMENTS: (state, comments) => (state.article.comments = comments),
   },
 
   actions: {

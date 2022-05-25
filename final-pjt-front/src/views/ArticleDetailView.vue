@@ -1,14 +1,10 @@
 <template>
   <div class="container box">
-    {{article}}
-    
-    {{ article.article_comments }}
-    {{ article.comments }}
-
+    <div class="content">
     <div class="titlecontainer">
       <strong>{{ article.article_title }}</strong>
       <div class="article-info">
-          <span>
+        <span>
           <strong>{{ article.user.username }}</strong> | {{ article.article_created_at.substr(0,10) }} | {{ article.article_created_at.substr(11,8) }}
         </span>
         <span class="article-user">
@@ -16,18 +12,18 @@
         </span>
       </div>
     </div>
-    <div class="contents-container ">
-      <h6>
+    <div class="contents-container">
+      <p>
         {{ article.article_content }}
-      </h6>
+      </p>
     </div>
-    <div class="footer">
-    <div v-if="isAuthor">
-      <router-link :to="{ name: 'articleEdit', params: { articlePk } }">
-        <button>Edit</button>
-      </router-link>
-      |
-      <button @click="deleteArticle(articlePk)">Delete</button>
+    <div class="footer-container">
+      <div v-if="isAuthor">
+        <router-link :to="{ name: 'articleEdit', params: { articlePk } }">
+          <button class="button is-text is-small">Article Edit</button>
+        </router-link>
+        <button @click="deleteArticle(articlePk)" class="button is-text is-small">Article Delete</button>
+      </div>
     </div>
     <!-- <div>
       Likeit:
@@ -35,11 +31,11 @@
         @click="likeArticle(articlePk)"
       >{{ article.article_likes }}</button>
     </div> -->
+    
     </div>
-    <hr />
-    <!-- Comment UI -->
-    {{ article.articlecomments }}
-    <comment-list :articlecomments="article.articlecomments">dd</comment-list>
+
+
+    <comment-list :comments="article.comments">dd</comment-list>
 
   </div>
 </template>
@@ -80,11 +76,13 @@
   margin: 30px;
 }
 .contents-container{
-  width: 500px;
   margin: 30px;
-  height: 125px;
+
 }
 .article-info{
   text-align: justify;
+}
+.footer-container{
+  margin:30px;
 }
 </style>

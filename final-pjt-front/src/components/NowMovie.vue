@@ -32,34 +32,24 @@
 		<h1 class="title">NOW MOVIES</h1>
 
 		<div class="row">
-			<div v-for="movie in nowMovies" :key="movie.id" class="card col-3">
-	
-				<div class="card-image">
+			<div v-for="movie in nowMovies" :key="movie.id" class="card col-2">
+				<div class="card-image" id="cardimg">
 					<figure class="image">
 						<router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
 							<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" class=" is-128x128">
-							
 						</router-link>
 					</figure>
 				</div>
-				<div class="card-content">
-					<div class="media">
-						<p class="title is-5">{{ movie.title }}</p>
-					</div>
+				<div class="card-content" id="cardcontent">
+					
+					<p>{{ movie.title }}</p>
+					
 					<p>{{ movie.release_date }}</p>
 				</div>
-				<footer class="card-footer">
-					<p class="card-footer-item">
-						<span>
-							<router-link :to="`popular/${movie.id}`"></router-link>
-						</span>
-					</p>
-				</footer>
+			
 			</div>
 		</div>
   </div>
-		
-	
 		<h1 class='title'>회원</h1>
 	</div>
 </template>
@@ -87,5 +77,12 @@ export default {
 </script>
 	
 <style>
-	
+#cardimg{
+	padding: auto;
+	height:100px;
+}
+#cardcontent{
+	padding: 0;
+	height:100px;
+}
 </style>

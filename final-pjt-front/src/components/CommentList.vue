@@ -1,16 +1,15 @@
 <template>
-  <div class="comment-list">
+  <div class="container">
     
-    <ul>
-
+    <hr>
       <comment-list-item 
-        v-for="comment in articlecomments" 
+        v-for="comment in comments" 
         :comment="comment" 
         :key="comment.pk">
       </comment-list-item>        
-    </ul>
 
 
+    
     <comment-list-form></comment-list-form>
   </div>
 </template>
@@ -24,12 +23,10 @@ import CommentListForm from '@/components/CommentListForm.vue'
 export default {
   name: 'CommentList',
   components: { CommentListForm, CommentListItem },
-  props: { articlecomments: Array },
+  props: { comments: Array },
 }
 </script>
 
 <style>
-.comment-list {
-  border: 1px solid blue;
-}
+
 </style>

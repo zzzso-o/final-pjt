@@ -25,20 +25,12 @@
               {{ popularMovie.runtime}}min
           </span>
         </div>
-
+        <em>{{ popularMovie.tagline }}</em>
         <div>
           <span class="fa fa-star checked fa-xl">{{ popularMovie.vote_average }}</span>
-          <br>
-          <!-- <div>
-          <i class="fa-brands fa-gratipay fa-2x "></i>
-          <i class="fa-brands fa-youtube fa-2x"></i>
-          </div> -->
         </div>
-        <br>
-        <div>
-          <span>{{ popularMovie.tagline }}</span>
-        </div>
-        <h2>overview</h2>
+        <h2 id="overview-title">overview</h2>
+        {{ popularMovie.overview }}
       </div>
       </div>
     </div>
@@ -96,5 +88,8 @@
 }
 #detail_container{
   width: 850px;
+}
+#overview-title{
+  margin :0
 }
 </style>

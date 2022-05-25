@@ -31,13 +31,13 @@ class ArticleSerializer(serializers.ModelSerializer):
             fields = ('pk', 'username')
 
 
-    article_comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentSerializer(many=True, read_only=True)
     user = UserSerializer(read_only=True)
     article_likes = UserSerializer(read_only=True, many=True)
 
     class Meta:
         model = Article
-        fields = ('pk', 'user', 'article_title', 'article_content', 'article_comments', 'article_likes', 'article_created_at', 'article_updated_at')
+        fields = ('pk', 'user', 'article_title', 'article_content', 'comments', 'article_likes', 'article_created_at', 'article_updated_at')
 
    
 
