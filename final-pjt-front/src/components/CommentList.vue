@@ -2,12 +2,14 @@
   <div class="comment-list">
     
     <ul>
+
       <comment-list-item 
         v-for="comment in comments" 
         :comment="comment" 
         :key="comment.pk">
       </comment-list-item>        
     </ul>
+
 
     <comment-list-form></comment-list-form>
   </div>

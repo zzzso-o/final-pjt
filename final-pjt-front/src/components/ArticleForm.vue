@@ -1,15 +1,15 @@
 <template>
   <div >
-    <!-- <h1 class="title">새 글 작성</h1>
+    
     <div class="box">
       <form @submit.prevent="onSubmit">
         <div>
-          <input v-model="newArticle.title" id="title" 
+          <input v-model="newArticle.article_title" id="title" 
           class="input is-link " placeholder="제목을 입력하세요"/>
         </div>
         <br>
         <div>
-          <textarea v-model="newArticle.content" type="text" id="content" class="textarea is-link is-hovered is-large"
+          <textarea v-model="newArticle.article_content" type="text" id="content" class="textarea is-link is-hovered is-large"
           placeholder="영화에 관한 토론은 언제나 환영입니다!╰(*°▽°*)╯"></textarea>
         </div>
         <br>
@@ -17,8 +17,8 @@
           <button>{{ action }}</button>
         </div>
       </form>
-    </div> -->
-  <form @submit.prevent="onSubmit">
+    </div>
+  <!-- <form @submit.prevent="onSubmit">
     <div>
       <label for="title">title: </label>
       <input v-model="newArticle.article_title" type="text" id="article_title" />
@@ -30,7 +30,7 @@
     <div>
       <button>{{ action }}</button>
     </div>
-  </form>
+  </form> -->
 
 
   </div>

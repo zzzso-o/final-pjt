@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Edit Article</h1>
+  <div class="container">
+    <h1 class="title">수정</h1>
     <article-form v-if="isArticle" :article="article" action="update">
 
     </article-form>

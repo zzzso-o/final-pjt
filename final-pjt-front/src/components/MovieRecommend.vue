@@ -5,7 +5,7 @@
     <div class="container">
       <h1 class="title">RECOMMEND MOVIES</h1>
       <div class="row">
-        <div v-for="movie in recommendmovie" :key="movie.id" class="card col-2">
+        <div v-for="movie in recommendmovie" :key="movie.id" class="card col-3">
           <div class="card-image">
             <figure class="image">
               <router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
@@ -13,22 +13,25 @@
               </router-link>
             </figure>
           </div>
-          <div class="card-content">
+          <div class="content">
             <div class="media">
-              <p class="title is-5">{{ movie.title }}</p>
+              <p><strong>{{ movie.title }}</strong>
+                ({{ movie.release_date.substr(0,4) }})
+              </p>
             </div>
-            <p>{{ movie.release_date }}</p>
           </div>
-          <footer class="card-footer">
+          <!-- <footer class="card-footer">
             <p class="card-footer-item">
               <span>
                 <router-link :to="`popular/${movie.id}`"></router-link>
               </span>
             </p>
-          </footer>
+          </footer> -->
         </div>
       </div>
     </div>
+    
+
 
 
   </div>

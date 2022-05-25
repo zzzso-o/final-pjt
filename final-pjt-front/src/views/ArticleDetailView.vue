@@ -1,11 +1,22 @@
 <template>
-  <div>
-    <h1>제목 : {{ article.article_title }}</h1>
-
-    <p>
-      글 내용 : {{ article.article_content }}
-    </p>
-    <!-- Article Edit/Delete UI -->
+  <div class="container box">
+    <div class="titlecontainer">
+      <strong>{{ article.article_title }}</strong>
+      <div class="article-info">
+          <span>
+          <strong>{{ article.user.username }}</strong> | {{ article.article_created_at.substr(0,10) }} | {{ article.article_created_at.substr(11,8) }}
+        </span>
+        <span class="article-user">
+          추천 {{ article.like_count }} | 댓글 {{ article.comment_count }}
+        </span>
+      </div>
+    </div>
+    <div class="contents-container ">
+      <h6>
+        {{ article.article_content }}
+      </h6>
+    </div>
+    <div class="footer">
     <div v-if="isAuthor">
       <router-link :to="{ name: 'articleEdit', params: { articlePk } }">
         <button>Edit</button>
@@ -13,15 +24,13 @@
       |
       <button @click="deleteArticle(articlePk)">Delete</button>
     </div>
-
-    <!-- Article Like UI -->
     <div>
       Likeit:
       <button
         @click="likeArticle(articlePk)"
-      >{{ likeCount }}</button>
+      >{{ article.article_likes }}</button>
     </div>
-
+    </div>
     <hr />
     <!-- Comment UI -->
     <comment-list :comments="article.article_comment_comments"></comment-list>
@@ -59,4 +68,17 @@
     },
   }
 </script>
-<style></style>
+<style>
+.titlecontainer{
+  width: 500px;
+  margin: 30px;
+}
+.contents-container{
+  width: 500px;
+  margin: 30px;
+  height: 125px;
+}
+.article-info{
+  text-align: justify;
+}
+</style>

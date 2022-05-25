@@ -134,3 +134,7 @@ POST http://localhost:8000/api/v1/articles/ 400 (Bad Request)
 edit:1 Uncaught (in promise) AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST',
 
 => 변수명이 달랐음
+
+
+------ 
+movie detail이 없는경우 해결해야함

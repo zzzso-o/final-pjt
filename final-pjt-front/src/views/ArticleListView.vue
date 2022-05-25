@@ -1,55 +1,45 @@
 <template>
   <div class="container">
     <h1 class="title">COMMUNITY</h1>
-
-
-
       <router-link 
         :to="{ name: 'articleNew' }">
-        <button class="button ">New </button>
+        <button class="button is-right d-inline" ><i class="fa-solid fa-pencil fa-sm"></i> <strong>New</strong></button>
       </router-link>
+      <b-colorpicker value="#CCC5DE" class="d-inline"/>
       <br>
-
-      
-<!--         
-        {{ article.pk}} 
-        {{ article.user.username }} : 
-        
-        <router-link 
-          :to="{ name: 'article', params: {articlePk: article.pk} }">
-          {{ article.article_title }}
-        </router-link>
-        
-
-        ({{ article.comment_count }}) | +{{ article.like_count }} -->
       <table class="table table-hover">
-       <thead> 
-        <tr>
-          <th >No</th>
-          <th >작성자</th>
-          <th >제목</th>
-          <th >작성시간</th>
-          <th >수정시간</th>
-        </tr>
-       </thead>
-        <t-body >
-        <!-- <b-table-column  field="id" label="ID" width="40"  numeric v-slot="article">
-          {{ article.pk }}
-        </b-table-column> -->
-          <ul>
-            <li v-for="article in articles" :key="article.pk">
-              {{article.pk}}
-              {{artucke.user}}
-            </li>
-            <!-- <td>{{article.pk}}</td>
-            <td>{{article.user.username}}</td>
-            <td>{{article.article_title}}</td>
-            <td>{{article.article_title}}</td>
-            <td>{{article.article_content}}</td> -->
-            
-          </ul>
-        </t-body>
-        </table>
+        <tbody>
+          <tr class="text-center">
+            <th>No</th>
+            <th>추천</th>
+            <th>제목</th>
+            <th>작성시간</th>
+            <th>수정시간</th>
+            <th>작성자</th>
+          </tr>
+          <tr class="text-center table-primary ">
+            <th>전체공지</th>
+            <th></th>
+            <th>좋은말만 써주세요</th>
+            <th></th>
+            <th></th>
+            <th>관리자</th>
+          </tr>
+          <tr v-for="article in articles" :key="article.pk" class="text-center">
+            <th>{{ article.pk }}</th>
+            <th>{{ article.like_count }}</th>
+            <th>
+              <router-link 
+                :to="{ name: 'article', params: {articlePk: article.pk} }">
+                {{ article.article_title }}({{ article.comment_count }})
+              </router-link>
+            </th>
+            <th>{{ article.article_created_at }}</th>
+            <th>{{ article.article_updated_at }}</th>
+            <th>{{ article.user.username }}</th>
+          </tr>
+        </tbody>
+      </table>
 
 
 
@@ -76,38 +66,18 @@
     },
     data() {
       return {
-        data: [
-          { 'no': 1, 'first_name': 'Jesse', 'last_name': 'Simmons', 'date': '2016-10-15 13:43:27', 'gender': 'Male' },
-        ],
-        columns: [
-          {
-            field: 'no',
-            label: 'No',
-            width: '40',
-            numeric: true
-          },
-          {
-            field: 'first_name',
-            label: 'Title',
-          },
-          {
-            field: 'last_name',
-            label: '작성자',
-          },
-          {
-            field: 'date',
-            label: 'Date',
-            centered: true
-          },
-          {
-            field: 'gender',
-            label: 'Updated_Date',
-          }
-        ]
+        
     }
   }
   }
 </script>
 
-<style></style>
+<style>
+.th{
+  text-align: center;
+}
+.tr{
+  text-align: center;
+}
+</style>
 

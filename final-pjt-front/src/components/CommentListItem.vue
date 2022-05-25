@@ -1,9 +1,10 @@
 <template>
   <li class="comment-list-item">
+    {{comment}}
     <router-link :to="{ name: 'profile', params: { username: comment.user.username } }">
       {{ comment.user.username }}
     </router-link>: 
-    
+
     <span v-if="!isEditing">{{ payload.article_comment_content }}</span>
 
     <span v-if="isEditing">

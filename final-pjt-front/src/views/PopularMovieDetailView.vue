@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <div class="container row">
+    <div class="container row" id="detail_container" v-if=!!popularMovie.title> 
       <h1 class="title">Movie Detail</h1>
     <div class=" col-4">
       <div>
@@ -10,8 +10,8 @@
     </div>
     <div class="card col-8">
     <div class="card-content">
-      <div class="content">
-        <h1 class="title">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1>
+      <div class="content" >
+        <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1>
         <div class="facts">
           <span>
             {{popularMovie.release_date }}
@@ -25,7 +25,7 @@
               {{ popularMovie.runtime}}min
           </span>
         </div>
-        <br>
+
         <div>
           <span class="fa fa-star checked fa-xl">{{ popularMovie.vote_average }}</span>
           <br>
@@ -43,7 +43,12 @@
       </div>
     </div>
     </div>
-    {{ popularMovie.homepage }}
+    <div class="container" v-else>
+      tmdb에서 정보를 볼러올 수 없습니다 
+      영화 정보가 존재하지 않아요 
+      뒤로가기 버튼으로 다른 영화를 조회해주세요 
+    </div>
+    <!-- {{ popularMovie.homepage }}
     {{ popularMovie.id }}
     {{ popularMovie.adult }}
     {{ popularMovie.genres }}
@@ -51,19 +56,7 @@
     {{ popularMovie.overview }}
     {{ popularMovie.release_date }}
     {{ popularMovie.vote_average }}
-    {{ popularMovie.poster_path}}
-    <div class="container">
-      <div class="card-content">
-        <div class="media">
-          <p class="title is-5">{{ popularMovie.title }}</p>
-        </div>
-        <p>{{popularMovie.release_date }}</p>
-      </div>
-    </div>
- 
-
-
-    <!-- <p>{{ popularMovie.title }}</p> -->
+    {{ popularMovie.poster_path}} -->
   </div>
 </template>
 
@@ -88,10 +81,20 @@
   }
 </script>
 <style>
+
 .checked {
   color: orange;
 }
 .text-right{
   text-align: right;
+}
+/* .facts{
+  margin-top: 0px;
+} */
+#movietitle{
+  margin-bottom: 0;
+}
+#detail_container{
+  width: 850px;
 }
 </style>

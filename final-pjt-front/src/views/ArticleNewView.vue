@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1 class="title">새 글 작성</h1>
     <article-form :article="article" action="create"></article-form>
   </div>
 </template>
