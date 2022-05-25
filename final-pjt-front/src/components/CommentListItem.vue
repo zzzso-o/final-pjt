@@ -4,10 +4,10 @@
       {{ comment.user.username }}
     </router-link>: 
     
-    <span v-if="!isEditing">{{ payload.content }}</span>
+    <span v-if="!isEditing">{{ payload.article_comment_content }}</span>
 
     <span v-if="isEditing">
-      <input type="text" v-model="payload.content">
+      <input type="text" v-model="payload.article_comment_content">
       <button @click="onUpdate">Update</button> |
       <button @click="switchIsEditing">Cancle</button>
     </span>
@@ -31,7 +31,7 @@ export default {
       payload: {
         articlePk: this.comment.article,
         commentPk: this.comment.pk,
-        content: this.comment.content
+        article_comment_content: this.comment.article_comment_content
       },
     }
   },

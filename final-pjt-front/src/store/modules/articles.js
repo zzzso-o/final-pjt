@@ -69,11 +69,11 @@ export default {
         })
     },
 
-    updateArticle({ commit, getters }, { pk, title, content}) {
+    updateArticle({ commit, getters }, { pk, article_title, article_content}) {
       axios({
         url: drf.articles.article(pk),
         method: 'put',
-        data: { title, content },
+        data: { article_title, article_content },
         headers: getters.authHeader,
       })
         .then(res => {
@@ -110,8 +110,8 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    createComment({ commit, getters }, { articlePk, content }) {
-      const comment = { content }
+    createComment({ commit, getters }, { articlePk, article_comment_content }) {
+      const comment = { article_comment_content }
 
       axios({
         url: drf.articles.comments(articlePk),
@@ -125,8 +125,8 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    updateComment({ commit, getters }, { articlePk, commentPk, content }) {
-      const comment = { content }
+    updateComment({ commit, getters }, { articlePk, commentPk, article_comment_content }) {
+      const comment = { article_comment_content }
 
       axios({
         url: drf.articles.comment(articlePk, commentPk),

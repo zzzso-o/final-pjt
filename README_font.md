@@ -127,3 +127,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 ---
 create 
 serializer.save(user=request.user)
+----
+
+POST http://localhost:8000/api/v1/articles/ 400 (Bad Request)
+
+edit:1 Uncaught (in promise) AxiosError {message: 'Request failed with status code 400', name: 'AxiosError', code: 'ERR_BAD_REQUEST',
+
+=> 변수명이 달랐음

@@ -1,5 +1,7 @@
 <template>
+<b-notification aria-close-label="Close notification" type="is-danger is-light">
   <div class="account-error-list">
+    
     <p v-for="(errors, field) in authError" :key="field">
       {{ field }}
       <ul>
@@ -10,6 +12,7 @@
     </p>
 
   </div>
+</b-notification>
 </template>
 
 <script>
@@ -25,6 +28,6 @@
 
 <style>
   .account-error-list {
-    color: red;
+    color: palevioletred;
   }
 </style>

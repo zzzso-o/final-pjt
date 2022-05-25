@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="onSubmit" class="comment-list-form">
     <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="content" required>
+    <input type="text" id="comment" v-model="article_comment_content" required>
     <button>Comment</button>
   </form>
 </template>
@@ -13,7 +13,7 @@ export default {
   name: 'CommentListForm',
   data() {
     return {
-      content: ''
+      article_comment_content: ''
     }
   },
   computed: {
@@ -22,8 +22,8 @@ export default {
   methods: {
     ...mapActions(['createComment']),
     onSubmit() {
-      this.createComment({ articlePk: this.article.pk, content: this.content, })
-      this.content = ''
+      this.createComment({ articlePk: this.article.pk, article_comment_content: this.article_comment_content, })
+      this.article_comment_content = ''
     }
   }
 }

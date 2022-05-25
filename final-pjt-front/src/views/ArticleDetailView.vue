@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>{{ article.title }}</h1>
+    <h1>제목 : {{ article.article_title }}</h1>
 
     <p>
-      {{ article.content }}
+      글 내용 : {{ article.article_content }}
     </p>
     <!-- Article Edit/Delete UI -->
     <div v-if="isAuthor">
@@ -24,7 +24,7 @@
 
     <hr />
     <!-- Comment UI -->
-    <comment-list :comments="article.comments"></comment-list>
+    <comment-list :comments="article.article_comment_comments"></comment-list>
 
   </div>
 </template>
