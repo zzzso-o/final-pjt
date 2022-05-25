@@ -3,6 +3,7 @@
     <now-movie>
 
     </now-movie>
+    
 
   </div>
 </template>

@@ -1,25 +1,22 @@
 <template>
-  <div class="container">
 
-    <!-- {{ comment }} -->
+  <div class="container">
+    <hr class="opacity-50" id="hr">
     <div>
-    <strong>{{ comment.user.username }}</strong>
-    <span v-if="currentUser.username === comment.user.username && !isEditing">
-      <button @click="switchIsEditing" class="button is-text is-small">Edit</button> 
-      <button @click="deleteComment(payload)" class="button is-text is-small">Delete</button>
-    </span>
+      <strong>{{ comment.user.username }}</strong>
+      <span v-if="currentUser.username === comment.user.username && !isEditing">
+        <button @click="switchIsEditing" class="button is-text is-small">Edit</button> 
+        <button @click="deleteComment(payload)" class="button is-text is-small">Delete</button>
+      </span>
     </div>
     <span v-if="!isEditing">{{ payload.article_comment_content }}</span>
-
     <span v-if="isEditing">
       <input type="text" v-model="payload.article_comment_content">
       <button @click="onUpdate" class="button is-text is-small">Update</button> 
       <button @click="switchIsEditing" class="button is-text is-small">Cancle</button>
     </span>
 
-
   </div>
-
 </template>
 
 <script>
@@ -56,5 +53,11 @@ export default {
 </script>
 
 <style>
+#hr{
+  background-color: black;
+  width: 90%;
 
+  margin: 10px;
+
+}
 </style>

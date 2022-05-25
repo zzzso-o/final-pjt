@@ -34,7 +34,7 @@
     
     </div>
 
-
+    
     <comment-list :comments="article.comments">dd</comment-list>
 
   </div>
