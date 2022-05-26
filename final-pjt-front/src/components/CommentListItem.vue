@@ -7,6 +7,11 @@
       <span v-if="currentUser.username === comment.user.username && !isEditing">
         <button @click="switchIsEditing" class="button is-text is-small">Edit</button> 
         <button @click="deleteComment(payload)" class="button is-text is-small">Delete</button>
+        {{ comment.article_comment_created_at.substr(0,10)}} 
+        {{ comment.article_comment_created_at.substr(11,8)}} |
+        {{ comment.article_comment_updated_at.substr(0,10)}} 
+        {{ comment.article_comment_updated_at.substr(11,8)}} 
+        
       </span>
     </div>
     <span v-if="!isEditing">{{ payload.article_comment_content }}</span>

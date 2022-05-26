@@ -92,12 +92,12 @@ const routes = [
   },
 
   {
-    path: '/popular',
+    path: '/movies',
     name: 'movies',
     component: PopularMovieListView
   },
   {
-    path: '/popular/:movieId',
+    path: '/movies/:movieId',
     name: 'movie',
     component: PopularMovieDetailView
   },

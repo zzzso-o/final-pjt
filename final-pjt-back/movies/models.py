@@ -3,17 +3,18 @@ from django.conf import settings
 
 
 class Genre(models.Model):
-    genre_name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
 
 
 class Movie(models.Model):
-    movie_title = models.CharField(max_length=100)
-    original_language = models.CharField
-    release_date = models.DateTimeField()
+    title = models.CharField(max_length=100)
+    original_language = models.CharField(max_length=50)
+    overview = models.TextField()
+    release_date = models.DateField()
     poster_path = models.CharField(max_length=100)
     vote_average = models.FloatField()
-    genre = models.ManyToManyField(Genre, related_name='genre')
-    movie_likes = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='movie_likes')
+    genres = models.ManyToManyField(Genre, related_name='movies')
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movies')
     # like : movie M:N 외래키
 
     # def __str__(self):
@@ -22,7 +23,7 @@ class Movie(models.Model):
 class MovieComment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # user : comment 1:N 외래키
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='reviews')
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
     # movie : comment 1:N 외래키
    
     movie_comment_content = models.CharField(max_length=100)

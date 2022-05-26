@@ -137,4 +137,13 @@ edit:1 Uncaught (in promise) AxiosError {message: 'Request failed with status c
 
 
 ------ 
-movie detail이 없는경우 해결해야함
+movie detail이 없는경우 해결해야함=--
+
+--\
+---
+바벨 애들을 설치했다가 지우는데 시간 짱오래 걸림 패키지랑 등등 깃으로 관리하고 있어서 그거 보면서 지움
+
+
+--- 
+front에서 api 받아오다가
+db 저장해야한다고 해서 back에서 받아와서 저장해서 불러옴

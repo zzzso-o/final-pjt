@@ -1,17 +1,20 @@
 <template>
+
   <div class="container">
+		<!-- {{popularMovies}} -->
 		<h1 class="title">POPULAR MOVIES</h1>
 		<div class="row">
 			<div v-for="movie in popularMovies" :key="movie.id" class="card col-3">
 				<div class="card-image">
 					<figure >
-						<router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
+						<router-link :to="{ name: 'movie', params: {movieId: movie.pk} }">
 							<div>
 								<img class="cropped" :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`" alt="movie poster">
 							</div>
 						</router-link>
 					</figure>
 				</div>
+				
 				<div class="card-content">
 					<div class="media">
 						<p class="title is-5">{{ movie.title }}</p>
@@ -54,13 +57,6 @@ export default {
 	},
 	computed: {
     ...mapGetters(['popularMovies']),
-		// total(){
-		// 	return this.$store.getters['popularMovies'].length
-		// },
-		// paginatedItems(){
-		// 	let page_number = this.current-1
-		// 	return this.$store.getters['popularMovies'].slice(page_number * this.perPage, (page_number+1) * this.perPage)
-		// }
   },
 
 	methods:{

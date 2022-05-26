@@ -8,7 +8,7 @@ urlpatterns = [
     # 인기 영화 조회
     path('', views.popular_movies, name='popular_movies'),
     # 인기 영화 상세페이지
-    path('<int:movies_pk>/', views.movie_detail, name='movie_detail'),
+    path('<int:movie_pk>/', views.movie_detail, name='movie_detail'),
     
     # 영화 평점 조회
     # POST / movies/1/comments/ => 1번 영화에 평점달기

@@ -1,8 +1,8 @@
-// import router from '@/router'
+import router from '@/router'
 import axios from 'axios'
-// import drf from '@/api/drf'
-const API_DETAIL_URL = 'https://api.themoviedb.org/3/movie'
-const API_URL = 'https://api.themoviedb.org/3/movie/popular'
+import drf from '@/api/drf'
+// const API_DETAIL_URL = 'https://api.themoviedb.org/3/movie'
+// const API_URL = 'https://api.themoviedb.org/3/movie/popular'
 const API_KEY = 'bd2e2aed22ef7bc837f34ff1cf7ef434'
 
 const NOW_API_URL = 'https://api.themoviedb.org/3/movie/now_playing'
@@ -44,42 +44,68 @@ export default {
 	},
 
 	actions: {
-		fetchPopularMovies({ commit }){
-			axios
-			.all([
-				axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=1`),
-				axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=2`),
-				axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=3`),
-				axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=4`),
-				axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=5`),
-			])
-			.then(axios.spread((res1, res2, res3, res4, res5) => 
-				{
-					const data1 = res1.data.results;
-          const data2 = res2.data.results;
-          const data3 = res3.data.results;
-          const data4 = res4.data.results;
-					const data5 = res5.data.results;
-					const res = [...data1, ...data2, ...data3, ...data4, ...data5];
-					commit('SET_POPULAR_MOVIES', res)
-				})
-			)
-			.catch(err => { // 실패시 에러메시지
-					console.error(err.response.data)
-			})
-		},
 
-		fetchPopularMoive({ commit }, moviePk){
+			fetchPopularMovies({ commit, getters }) {
+				axios({
+				url: drf.movies.movies(),
+					method: 'get',
+					headers: getters.authHeader,
+				})
+					.then(res => commit('SET_POPULAR_MOVIES', res.data))
+					.catch(err => console.error(err.response))
+			},
+
+			fetchPopularMovie({ commit, getters }, movieId) {
+				axios({
+					url: drf.movies.movie(movieId),
+					method: 'get',
+					headers: getters.authHeader,
+				})
+					.then(res => commit('SET_POPULAR_MOVIE', res.data))
+					.catch(err => {
+					console.error(err.response)
+					if (err.response.status === 404) {
+						router.push({ name: 'NotFound404' })
+					}
+					})
+			},
+
+		// fetchPopularMovies({ commit }){
+		// 	axios
+		// 	.all([
+		// 		axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=1`),
+		// 		axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=2`),
+		// 		axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=3`),
+		// 		axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=4`),
+		// 		axios.get(`${API_URL}/?api_key=${API_KEY}&language=ko&page=5`),
+		// 	])
+		// 	.then(axios.spread((res1, res2, res3, res4, res5) => 
+		// 		{
+		// 			const data1 = res1.data.results;
+        //   const data2 = res2.data.results;
+        //   const data3 = res3.data.results;
+        //   const data4 = res4.data.results;
+		// 			const data5 = res5.data.results;
+		// 			const res = [...data1, ...data2, ...data3, ...data4, ...data5];
+		// 			commit('SET_POPULAR_MOVIES', res)
+		// 		})
+		// 	)
+		// 	.catch(err => { // 실패시 에러메시지
+		// 			console.error(err.response.data)
+		// 	})
+		// },
+
+		// fetchPopularMoive({ commit }, moviePk){
 			
-			axios
-			.get(`${API_DETAIL_URL}/${moviePk}?api_key=${API_KEY}&language=ko`)
-			.then(res => { // 성공시에 
-				commit('SET_POPULAR_MOVIE', res.data)
-			})
-			.catch(err => { 
-				console.error(err.response.data)
-			})
-		},
+		// 	axios
+		// 	.get(`${API_DETAIL_URL}/${moviePk}?api_key=${API_KEY}&language=ko`)
+		// 	.then(res => { // 성공시에 
+		// 		commit('SET_POPULAR_MOVIE', res.data)
+		// 	})
+		// 	.catch(err => { 
+		// 		console.error(err.response.data)
+		// 	})
+		// },
 
 		fetchNowMovies({ commit }){
 			axios

@@ -18,7 +18,6 @@ from .serializers import (
 @login_required
 # (login_url='/accounts/login')
 def article_index_create(request):
-
     def article_index():
         # comment 개수 추가
         articles = Article.objects.annotate(

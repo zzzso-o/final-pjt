@@ -1,7 +1,7 @@
 <template>
   <div>
-    
-    <div class="container row" id="detail_container" v-if=!!popularMovie.title> 
+    <!-- {{popularMovie}} -->
+    <div class="container row" id="detail_container" > 
       <h1 class="title">Movie Detail</h1>
     <div class=" col-4">
       <div>
@@ -11,13 +11,13 @@
     <div class="card col-8">
     <div class="card-content">
       <div class="content" >
-        <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1>
+        <!-- <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1> -->
         <div class="facts">
           <span>
             {{popularMovie.release_date }}
           </span>
           <span class="genres">
-            {{ popularMovie.genres[0].name}},
+            <!-- {{ popularMovie.genres}}, -->
           </span>
           <span class="runtime">
               {{ popularMovie.runtime}}min
@@ -33,20 +33,6 @@
       </div>
     </div>
     </div>
-    <div class="container" v-else>
-      tmdb에서 정보를 볼러올 수 없습니다 
-      영화 정보가 존재하지 않아요 
-      뒤로가기 버튼으로 다른 영화를 조회해주세요 
-    </div>
-    <!-- {{ popularMovie.homepage }}
-    {{ popularMovie.id }}
-    {{ popularMovie.adult }}
-    {{ popularMovie.genres }}
-    {{ popularMovie.title }}
-    {{ popularMovie.overview }}
-    {{ popularMovie.release_date }}
-    {{ popularMovie.vote_average }}
-    {{ popularMovie.poster_path}} -->
   </div>
 </template>
 
@@ -56,17 +42,17 @@
   export default {
     data() {
       return {
-        moviePk: this.$route.params.movieId,
+        movieId: this.$route.params.movieId,
       }
     },
     computed: {
       ...mapGetters(['popularMovie']),
     },
     methods: {
-      ...mapActions(['fetchPopularMoive'])
+      ...mapActions(['fetchPopularMovie'])
     },
     created() {
-      this.fetchPopularMoive(this.moviePk)
+      this.fetchPopularMovie(this.movieId)
     },
   }
 </script>

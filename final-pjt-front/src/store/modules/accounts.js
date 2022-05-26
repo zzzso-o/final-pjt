@@ -78,11 +78,11 @@ export default {
         axios({
           url: drf.accounts.logout(),
           method: 'post',
-          // data: {},
+          data: {},
           headers: getters.authHeader,
         })
           .then(() => {
-            dispatch('removeToken')
+            .dispatch('removeToken')
             // alert('성공적으로 logout!')
             router.push({ name: 'login' })
           })

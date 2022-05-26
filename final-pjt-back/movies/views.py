@@ -23,8 +23,6 @@ def movie_detail(request, movie_pk):
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
 
-
-
 @api_view(['POST'])
 def like_movie(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
@@ -38,8 +36,6 @@ def like_movie(request, movie_pk):
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
 
-
-
 # 영화 평점 생성(POST)
 @api_view(['POST',])
 def movie_comment_create(request, movie_pk):
@@ -51,7 +47,6 @@ def movie_comment_create(request, movie_pk):
         reviews = movie.reviews.all()
         serializer = CommentSerializer(reviews, many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
 
 
 # 영화 평점 수정, 삭제(PUT, DELETE)
