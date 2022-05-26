@@ -20,14 +20,6 @@
               </p>
             </div>
           </div>
-          <!-- <footer class="card-footer">
-            <p class="card-footer-item">
-              <span>
-                <router-link :to="`popular/${movie.id}`"></router-link>
-              </span>
-            </p>
-          </footer> -->
-          {{popularMovies}}
         </div>
       </div>
     </div>

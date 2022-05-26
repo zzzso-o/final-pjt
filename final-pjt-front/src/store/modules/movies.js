@@ -171,7 +171,7 @@ export default {
     },
 
     movieupdateComment({ commit, getters }, { moviePk, commentPk, movie_comment_content,  user_score }) {
-      const comment = { movie_comment_content,  user_score  }
+      const comment = { movie_comment_content,  user_score }
 
       axios({
         url: drf.movies.moviecomment(moviePk, commentPk),

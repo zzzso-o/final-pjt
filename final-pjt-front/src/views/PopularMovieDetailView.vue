@@ -12,19 +12,10 @@
       <div class="content" >
         <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ (popularMovie.release_date+'').substr(0,4) }})</h1>
         <div class="facts">
-          <span>
-            {{popularMovie.release_date }}
-          </span>
-          <span class="genres">
-            <!-- {{ popularMovie.genres}}, -->
-          </span>
-          <!-- <span class="runtime">
-              {{ popularMovie.runtime}}min
-          </span> -->
-        <!-- </div>
-        <em>{{ popularMovie.tagline }}</em>
-        <div> -->
           <span class="fa fa-star checked fa-xl">{{ popularMovie.vote_average }}</span>
+          <!-- <span>
+            {{popularMovie.release_date }}
+          </span> -->
         </div>
         <h2 id="overview-title">overview</h2>
         {{ popularMovie.overview }}
@@ -34,7 +25,7 @@
     </div>
 
 
-    <movie-comment-list :comments="popularMovie.comments">dd</movie-comment-list>
+    <movie-comment-list :comments="popularMovie.comments"></movie-comment-list>
 
   </div>
 </template>

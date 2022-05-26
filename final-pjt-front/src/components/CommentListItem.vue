@@ -7,18 +7,28 @@
       <span v-if="currentUser.username === comment.user.username && !isEditing">
         <button @click="switchIsEditing" class="button is-text is-small">Edit</button> 
         <button @click="deleteComment(payload)" class="button is-text is-small">Delete</button>
-        {{ comment.article_comment_created_at.substr(0,10)}} 
-        {{ comment.article_comment_created_at.substr(11,8)}} |
-        {{ comment.article_comment_updated_at.substr(0,10)}} 
-        {{ comment.article_comment_updated_at.substr(11,8)}} 
+        <button class="button is-text is-small" disabled>
+        {{ (comment.article_comment_created_at+'').substr(0,10)}} 
+        {{ (comment.article_comment_created_at+'').substr(11,8)}} |
+        {{ (comment.article_comment_updated_at+'').substr(0,10)}} 
+        {{ (comment.article_comment_updated_at+'').substr(11,8)}}
+        </button> 
         
       </span>
     </div>
     <span v-if="!isEditing">{{ payload.article_comment_content }}</span>
     <span v-if="isEditing">
-      <input type="text" v-model="payload.article_comment_content">
-      <button @click="onUpdate" class="button is-text is-small">Update</button> 
-      <button @click="switchIsEditing" class="button is-text is-small">Cancle</button>
+        <div class="buttons has-addons d-inline">
+          <button @click="onUpdate" class="button is-text is-small">Update</button> 
+          <button @click="switchIsEditing" class="button is-text is-small">Cancle</button>
+        </div>
+        <button class="button is-text is-small" disabled >
+        {{ (comment.article_comment_created_at+'').substr(0,10)}} 
+        {{ (comment.article_comment_created_at+'').substr(11,8)}} |
+        {{ (comment.article_comment_updated_at+'').substr(0,10)}} 
+        {{ (comment.article_comment_updated_at+'').substr(11,8)}}
+        </button>
+      <b-input type="textarea" size="is-small"  maxlength="100" v-model="payload.article_comment_content"></b-input>
     </span>
 
   </div>
@@ -36,7 +46,9 @@ export default {
       payload: {
         articlePk: this.comment.article,
         commentPk: this.comment.pk,
-        article_comment_content: this.comment.article_comment_content
+        article_comment_content: this.comment.article_comment_content,
+        article_comment_created_at : this.comment.article_comment_created_at,
+        article_comment_updated_at : this.comment.article_comment_updated_at,
       },
     }
   },
@@ -58,11 +70,5 @@ export default {
 </script>
 
 <style>
-#hr{
-  background-color: black;
-  width: 90%;
 
-  margin: 10px;
-
-}
 </style>

@@ -1,44 +1,97 @@
 <template>
 
-  <div class="container">
+  <div class="container" >
 
     <hr class="opacity-50" id="hr">
-    <div>
-      <strong>{{ comment.user.username }}</strong>
+    
+      <!-- 기본적으로 위쪽에 들어가는 곳 -->
+      <div id="comment-title">
+      <strong>{{ comment.pk }}. {{ comment.user.username }}</strong>
       <span v-if="currentUser.username === comment.user.username && !isEditing">
         <button @click="switchIsEditing" class="button is-text is-small">Edit</button> 
         <button @click="moviedeleteComment(payload)" class="button is-text is-small">Delete</button>
+        <button class="button is-text is-small disabled">
         {{ (comment.movie_comment_created_at+'').substr(0,10)}} 
         {{ (comment.movie_comment_created_at+'').substr(11,8)}} |
         {{ (comment.movie_comment_updated_at+'').substr(0,10)}} 
-        {{ (comment.movie_comment_updated_at+'').substr(11,8)}} 
-        
+        {{ (comment.movie_comment_updated_at+'').substr(11,8)}}
+        </button> 
       </span>
-    </div>
-    <span v-if="!isEditing">
+      </div>
+    <!-- Edit하는 중이 아닐 때 보여주는 곳 -->
+    <span v-if="!isEditing"> 
       <div class="container" >
         <div class="heart-ratings ml-3">
           <div 
             class="heart-ratings-fill space-x-2 text-lg"
             :style="{ width: ratingToPercent + '%' }"
           >
-          <span>★</span><span>★</span><span>★</span><span>★</span>
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
           <div class="heart-ratings-base space-x-2 text-lg">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
         </div>
+        <div class="container commentbox">
         {{ payload.movie_comment_content }}
+        </div>
       </div>
     </span>
-        <div class="container">
+        
+          <!-- Edit하고 있을 때 -->
           <span v-if="isEditing">
-            <input type="text" v-model="payload.movie_comment_content">
-            <input type="text" v-model="payload.user_score">
-            <button @click="onUpdate" class="button is-text is-small">Update</button> 
-            <button @click="switchIsEditing" class="button is-text is-small">Cancle</button>
+            <div class="buttons has-addons d-inline">
+              <button @click="onUpdate" class="button is-text is-small">Update</button> 
+              <button @click="switchIsEditing" class="button is-text is-small">Cancle</button>
+            </div>
+           <button class="button is-text is-small disabled">
+            {{ (comment.movie_comment_created_at+'').substr(0,10)}} 
+            {{ (comment.movie_comment_created_at+'').substr(11,8)}} |
+            {{ (comment.movie_comment_updated_at+'').substr(0,10)}} 
+            {{ (comment.movie_comment_updated_at+'').substr(11,8)}}
+            </button>
+            <!-- <input type="text" v-model="payload.user_score"> -->
+            <div class="container">
+            <!-- <div class="rate">
+              <b-field>
+                  <b-radio v-model="payload.user_score"
+                      native-value="1">
+                      <i>★</i>
+                  </b-radio>
+              </b-field>
+              <b-field>
+                <b-radio v-model="payload.user_score"
+                    native-value="2"
+                    >
+                    <i>★★</i>
+                </b-radio>
+              </b-field>
+              <b-field>
+                <b-radio v-model="payload.user_score"
+                    native-value="3"
+                    >
+                    <i>★★★</i>
+                </b-radio>
+              </b-field>
+              <b-field>
+                <b-radio v-model="payload.user_score"
+                    native-value="4">
+                  <i>★★★★</i>
+                </b-radio>
+              </b-field>
+              <b-field>
+                <b-radio v-model="payload.user_score"
+                    native-value="5">
+                    <i>★★★★★</i>
+                </b-radio>
+              </b-field>
+            </div> -->
+            <b-input type="textarea" size="is-small"  maxlength="100" v-model="payload.movie_comment_content"></b-input> 
+          </div>
           </span>
-        </div>
+          
+
+
       </div>
 </template>
 
@@ -86,13 +139,12 @@ export default {
 <style>
 #hr{
   background-color: black;
-  width: 90%;
-
+  width: 100%;
   margin: 10px;
 
 }
 .heart-ratings {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #aaa9a9; 
   position: relative;
   unicode-bidi: bidi-override;
@@ -118,4 +170,18 @@ export default {
   z-index: 0;
   padding: 0;
 }
+.button{
+  width : 20;
+}
+div#comment-title{
+  margin-top: 20px;
+  padding-left: 25px;
+}
+.commentbox{
+  margin-left: 2px;
+  margin-top: 6px;
+  font-size: xx-small;
+
+}
+
 </style>

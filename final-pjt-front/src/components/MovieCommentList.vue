@@ -9,7 +9,7 @@
       </movie-comment-list-item>        
 
 
-    
+    <hr>
     <movie-comment-list-form></movie-comment-list-form>
   </div>
 </template>

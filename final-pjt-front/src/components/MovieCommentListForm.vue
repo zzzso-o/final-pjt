@@ -1,47 +1,48 @@
 <template>
 <div>
-  <form @submit.prevent="onSubmit" class="comment-list-form">
+  <form @submit.prevent="onSubmit" class="movie-comment-list-form">
     <!-- <input type="text" required> -->
  
     <div class="rate">
       <b-field>
-          <b-radio v-model="user_score"
-              native-value="1">
-              <i>★</i>
-          </b-radio>
+        <b-radio v-model="user_score"
+            native-value="1"
+            type="is-warning">
+            <i>★</i>
+        </b-radio>
       </b-field>
       <b-field>
         <b-radio v-model="user_score"
-            native-value="2"
-            >
-            <i>★★</i>
+          native-value="2"
+          type="is-warning">
+          <i>★★</i>
         </b-radio>
       </b-field>
       <b-field>
         <b-radio v-model="user_score"
             native-value="3"
-            >
+            type="is-warning">
             <i>★★★</i>
         </b-radio>
       </b-field>
       <b-field>
         <b-radio v-model="user_score"
-            native-value="4">
+            native-value="4"
+            type="is-warning">
           <i>★★★★</i>
         </b-radio>
       </b-field>
       <b-field>
         <b-radio v-model="user_score"
-            native-value="5">
+            native-value="5"
+            type="is-warning">
             <i>★★★★★</i>
         </b-radio>
       </b-field>
-      
     </div>
-    <b-field label="Message">
-      <input maxlength="100" type="textarea" id="comment" v-model="movie_comment_content" >
-    </b-field>
-    <button class="button">등록</button>
+       <!-- <input v"-model="user_score"> -->
+      <b-input type="textarea" size="is-small" maxlength="100" id="comment" v-model="movie_comment_content" ></b-input>
+    <button class="button is-text is-small" >등록</button>
     
   </form>
 </div>
@@ -68,14 +69,8 @@ export default {
       moviePk: this.popularMovie.pk, 
       movie_comment_content: this.movie_comment_content,
       user_score: this.user_score, })
-
       this.movie_comment_content = ''
     },
-
-    myFunction(){
-      alert('click')
-      console.log('click')
-    }
 
   },
   created(){
@@ -85,8 +80,8 @@ export default {
 </script>
 
 <style>
-.comment-list-form {
-  border: 1px solid black;
+.movie-comment-list-form {
+  border: 0px solid black;
   margin: 1rem;
   padding: 1rem;
 }

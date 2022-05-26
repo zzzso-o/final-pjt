@@ -1,9 +1,10 @@
 <template>
+<div class="comment-container">
   <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="article_comment_content" required>
-    <button>Comment</button>
+    <b-input type="textarea" id="comment" v-model="article_comment_content" required></b-input>
+    <button class="button is-text is-small" >Comment</button>
   </form>
+</div>
 </template>
 
 <script>
@@ -22,7 +23,9 @@ export default {
   methods: {
     ...mapActions(['createComment']),
     onSubmit() {
-      this.createComment({ articlePk: this.article.pk, article_comment_content: this.article_comment_content, })
+      this.createComment({ 
+        articlePk: this.article.pk, 
+        article_comment_content: this.article_comment_content, })
       this.article_comment_content = ''
     }
   }
@@ -31,8 +34,12 @@ export default {
 
 <style>
 .comment-list-form {
-  border: 1px solid black;
+  border: 0px solid black;
   margin: 1rem;
   padding: 1rem;
+}
+.comment-container{
+  margin-left:0px;
+  padding-left:0px;
 }
 </style>

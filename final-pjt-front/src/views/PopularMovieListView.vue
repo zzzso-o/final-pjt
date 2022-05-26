@@ -15,12 +15,11 @@
 					</figure>
 				</div>
 				
-				<div class="card-content">
-					<div class="media">
-						<p class="title is-5">{{ movie.title }}</p>
-					</div>
-					<p>{{ movie.release_date }}</p>
-				</div>
+				<div class="card-content" id="card-content">
+
+						<strong>{{ movie.title }}</strong>
+						<p>[{{ movie.release_date }}]</p>
+
 				<footer class="card-footer">
 					<p class="card-footer-item">
 						<span>
@@ -31,7 +30,7 @@
 			</div>
 		</div>
   </div>
-	
+</div>
 </template>
 
 <script>
@@ -77,6 +76,10 @@ export default {
 	width: 180px; 
 	height: 205px; 
 	overflow: hidden;
+}
+#card-content{
+	padding: 0;
+	height:100px;
 }
 	
 </style>
