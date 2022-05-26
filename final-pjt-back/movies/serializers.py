@@ -16,7 +16,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MovieComment
-        fields = ('pk', 'user', 'movie_comment_content', 'movie', 'movie_comment_created_at', 'movie_comment_updated_at')
+        fields = ('pk', 'user', 'movie_comment_content', 'movie', 'movie_comment_created_at', 'movie_comment_updated_at', 'user_score')
         read_only_fields = ('movie',)
 
 # 전체 영화 조회
@@ -42,6 +42,6 @@ class MovieSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Movie
-        fields = ('title', 'release_date', 'genres', 'overview', 'vote_average', 'like_users', 'poster_path', 'comments',)
+        fields = ('pk','title', 'release_date', 'genres', 'overview', 'vote_average', 'like_users', 'poster_path', 'comments',)
 
 

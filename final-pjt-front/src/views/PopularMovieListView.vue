@@ -1,10 +1,10 @@
 <template>
 
   <div class="container">
-		<!-- {{popularMovies}} -->
+		
 		<h1 class="title">POPULAR MOVIES</h1>
 		<div class="row">
-			<div v-for="movie in popularMovies" :key="movie.id" class="card col-3">
+			<div v-for="movie in popularMovies" :key="movie.pk" class="card col-3">
 				<div class="card-image">
 					<figure >
 						<router-link :to="{ name: 'movie', params: {movieId: movie.pk} }">

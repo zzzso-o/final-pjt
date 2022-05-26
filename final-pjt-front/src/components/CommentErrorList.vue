@@ -1,8 +1,8 @@
 <template>
 <b-notification aria-close-label="Close notification" type="is-danger is-light">
-  <div class="account-error-list">
-    에러났음
-    <p v-for="(errors, field) in authError" :key="field">
+  <div class="comment-error-list">
+    
+    <p v-for="(errors, field) in commentError" :key="field">
       {{ field }}
       <ul>
         <li v-for="(error, idx) in errors" :key="idx">
@@ -19,15 +19,15 @@
   import { mapGetters } from 'vuex'
   
   export default {
-    name: 'AccountErrorList',
+    name: 'CommentErrorList',
     computed: {
-      ...mapGetters(['authError'])
+      ...mapGetters(['commentError'])
     },
   }
 </script>
 
 <style>
-  .account-error-list {
+  .comment-error-list {
     color: palevioletred;
   }
 </style>

@@ -33,6 +33,7 @@ export default {
 		popularMovie: state => state.popularMovie,
 		nowMovies: state => state.nowMovies,
 		searchMovies: state => state.searchMovies,
+		commentError: state => state.commentError,
 	},
 	
 	mutations: {
@@ -40,6 +41,8 @@ export default {
 		SET_POPULAR_MOVIE:(state, popularMovie) => state.popularMovie = popularMovie,
 		SET_NOW_MOVIES:(state, nowMovies) => state.nowMovies = nowMovies,
 		SET_SEARCH_MOVIES:(state, searchMovies) => state.searchMovies = searchMovies,
+		SET_MOVIE_COMMENTS: (state, comments) => (state.movie.comments = comments),
+		SET_COMMENT_ERROR: (state, error) => state.commentError = error
 
 	},
 
@@ -138,7 +141,65 @@ export default {
 		// 			console.error(err.response.data)
 		// 	})
 		// },
+		
 
+    likeMovie({ commit, getters }, moviePk) {
+      axios({
+        url: drf.movies.likeMovie(moviePk),
+        method: 'post',
+        headers: getters.authHeader,
+      })
+        .then(res => commit('SET_POPULAR_MOVIE', res.data))
+        .catch(err => console.error(err.response))
+    },
+
+    moviecreateComment({ commit, getters }, { moviePk, movie_comment_content, user_score }) {
+      const comment = { movie_comment_content, user_score }
+
+      axios({
+        url: drf.movies.moviecomments(moviePk),
+        method: 'post',
+        data: comment,
+        headers: getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_MOVIE_COMMENTS', res.data)
+        })
+        .catch(err => {
+			console.error(err.response)
+			commit('SET_COMMENT_ERROR', err.response.date)
+		})
+    },
+
+    movieupdateComment({ commit, getters }, { moviePk, commentPk, movie_comment_content,  user_score }) {
+      const comment = { movie_comment_content,  user_score  }
+
+      axios({
+        url: drf.movies.moviecomment(moviePk, commentPk),
+        method: 'put',
+        data: comment,
+        headers: getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_MOVIE_COMMENTS', res.data)
+        })
+        .catch(err => console.error(err.response))
+    },
+
+    moviedeleteComment({ commit, getters }, { moviePk, commentPk }) {
+        if (confirm('정말 삭제하시겠습니까?')) {
+          axios({
+            url: drf.movies.moviecomment(moviePk, commentPk),
+            method: 'delete',
+            data: {},
+            headers: getters.authHeader,
+          })
+            .then(res => {
+              commit('SET_MOVIE_COMMENTS', res.data)
+            })
+            .catch(err => console.error(err.response))
+        }
+      },
 		
 
 	},

@@ -147,3 +147,22 @@ movie detail이 없는경우 해결해야함=--
 --- 
 front에서 api 받아오다가
 db 저장해야한다고 해서 back에서 받아와서 저장해서 불러옴
+
+
+---- 
+
+@api_view(['POST',])
+def movie_comment_create(request, movie_pk,):
+    user = request.user
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    comments = movie.comments.all()
+    serializer = CommentSerializer(data=request.data)
+
+    if comments.filter(user_id=user.pk).exists(): # 이미 댓글을 남긴 사용자라면
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    else:
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(movie=movie, user=request.user)
+            # comments = movie.comments.all()
+            serializer = CommentSerializer(comments, many=True)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)

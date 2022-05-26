@@ -20,11 +20,11 @@ export default {
     comment: (articlePk, commentPk) =>
       HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
   },
-  movies:{
+  movies: {
     movies: () => HOST + MOVIES,
     movie: movieId => HOST + MOVIES + `${movieId}/`,
     moviecomments: movieId => HOST + MOVIES + `${movieId}/` + COMMENTS,
-    comment: (movieId, commentPk) =>
+    moviecomment: (movieId, commentPk) =>
       HOST + MOVIES + `${movieId}/` + COMMENTS + `${commentPk}/`
   }
 

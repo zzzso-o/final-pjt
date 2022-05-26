@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- {{popularMovie}} -->
     <div class="container row" id="detail_container" > 
       <h1 class="title">Movie Detail</h1>
     <div class=" col-4">
@@ -11,7 +10,7 @@
     <div class="card col-8">
     <div class="card-content">
       <div class="content" >
-        <!-- <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1> -->
+        <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1>
         <div class="facts">
           <span>
             {{popularMovie.release_date }}
@@ -19,12 +18,12 @@
           <span class="genres">
             <!-- {{ popularMovie.genres}}, -->
           </span>
-          <span class="runtime">
+          <!-- <span class="runtime">
               {{ popularMovie.runtime}}min
-          </span>
-        </div>
+          </span> -->
+        <!-- </div>
         <em>{{ popularMovie.tagline }}</em>
-        <div>
+        <div> -->
           <span class="fa fa-star checked fa-xl">{{ popularMovie.vote_average }}</span>
         </div>
         <h2 id="overview-title">overview</h2>
@@ -33,13 +32,19 @@
       </div>
     </div>
     </div>
+
+
+    <movie-comment-list :comments="popularMovie.comments">dd</movie-comment-list>
+
   </div>
 </template>
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import MovieCommentList from '@/components/MovieCommentList.vue'
 
   export default {
+    components: { MovieCommentList },
     data() {
       return {
         movieId: this.$route.params.movieId,
