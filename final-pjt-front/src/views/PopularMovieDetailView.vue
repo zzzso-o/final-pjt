@@ -10,7 +10,7 @@
     <div class="card col-8">
     <div class="card-content">
       <div class="content" >
-        <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ popularMovie.release_date.substr(0,4) }})</h1>
+        <h1 class="title" id="movietitle">{{ popularMovie.title }}({{ (popularMovie.release_date+'').substr(0,4) }})</h1>
         <div class="facts">
           <span>
             {{popularMovie.release_date }}

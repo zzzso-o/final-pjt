@@ -167,7 +167,6 @@ export default {
         })
         .catch(err => {
 			console.error(err.response)
-			commit('SET_COMMENT_ERROR', err.response.date)
 		})
     },
 

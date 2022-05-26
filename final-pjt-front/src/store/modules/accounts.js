@@ -108,6 +108,16 @@ export default {
             })
         }
       },
+      fetchProfile({ commit, getters }, { username }) {
+        axios({
+          url: drf.accounts.profile(username),
+          method: 'get',
+          headers: getters.authHeader,
+        })
+          .then(res => {
+            commit('SET_PROFILE', res.data)
+          })
+      },
 
     },
   }

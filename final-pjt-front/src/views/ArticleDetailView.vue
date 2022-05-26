@@ -5,7 +5,8 @@
       <strong>{{ article.article_title }}</strong>
       <div class="article-info">
         <span>
-          <strong>{{ article.user.username }}</strong> | {{ article.article_created_at.substr(0,10) }} | {{ article.article_created_at.substr(11,8) }}
+          <strong>{{ article.user.username }}</strong> | 
+          {{ (article.article_created_at+'').substr(0,10) }} | {{ article.article_created_at.substr(11,8) }}
         </span>
         <span class="article-user">
           추천 {{ article.like_count }} | 댓글 {{ article.comment_count }}
@@ -25,12 +26,12 @@
         <button @click="deleteArticle(articlePk)" class="button is-text is-small">Article Delete</button>
       </div>
     </div>
-    <!-- <div>
+    <div>
       Likeit:
       <button
         @click="likeArticle(articlePk)"
-      >{{ article.article_likes }}</button>
-    </div> -->
+      >{{ likeCount }}</button>
+    </div>
     
     </div>
 
@@ -54,9 +55,9 @@
     },
     computed: {
       ...mapGetters(['isAuthor', 'article']),
-      // likeCount() {
-      //   return this.article.article_likes?.length
-      // }
+      likeCount() {
+        return this.article.article_likes?.length
+      }
     },
     methods: {
       ...mapActions([
