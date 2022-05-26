@@ -18,8 +18,6 @@
           </span>
           <span class="genres">
             {{ popularMovie.genres[0].name}},
-            {{ popularMovie.genres[1].name}},
-            {{ popularMovie.genres[2].name}}
           </span>
           <span class="runtime">
               {{ popularMovie.runtime}}min

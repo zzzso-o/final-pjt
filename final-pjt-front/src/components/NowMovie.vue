@@ -1,72 +1,121 @@
 <template>
-  <div>
+<div class="container">
 
-	<!-- <div
-		v-for="movie in nowMovies" :key="movie.id">
-		{{movie.title}}
-		{{movie.vote_average}}
-		{{movie.release_date}}>
-	</div>  -->
-	<!-- v-model="test" -->
-		<!-- <b-carousel-list  :data="nowMovies" :items-to-show="5">
-			<template #item="list">
-				<div class="card">
-					<div class="card-image">
-						<figure class="image ">
-							<a @click="info(list.index)"><img :src="`https://image.tmdb.org/t/p/w500${list.poster_path}`" is-128x128></a>
-						</figure>
-						<b-tag type="is-danger" rounded style="position: absolute; top: 0;"><b>Now</b></b-tag>
-						<b-tag type="is-dark" rounded style="position: absolute; bottom: 0;"><b>{{list.vote_average}}</b></b-tag>
-					</div>
-					<div class="card-content">
-						<div class="content">
-							<p class="title is-6">{{ list.title }}</p>
-							<p class="subtitle is-7">{{ list.release_date }}</p>
-						</div>
-					</div>
-				</div>
-			</template>
-		</b-carousel-list> -->
+<!-- 
+<b-carousel>
+		<b-carousel-slide >
+			<div v-for="(carousel, i) in carousels" :key="i">
+        <div >
+            <section :class="`hero is-medium is-${carousel.color}`">
+                <div class="hero-body has-text-centered">
+                    <h1 class="title">{{carousel.text}}</h1>
+                </div>
+            </section>
+        </div>
+			</div>
+    </b-carousel-slide>
+</b-carousel> -->
 
+<!-- <template>
+    <b-carousel>
+        <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
+            <section :class="`hero is-medium is-${carousel.color}`">
+                <div class="hero-body has-text-centered">
+                    <h1 class="title">{{carousel.text}}</h1>
+                </div>
+            </section>
+        </b-carousel-item>
+    </b-carousel>
+</template> -->
+
+
+
+
+<!-- <b-carousel id="movie-carousel">
+	<b-carousel-slide v-for="movie in nowMovies" :key="movie.id" >
+
+			<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" class=" is-128x128">
+
+	</b-carousel-slide>
+</b-carousel> -->
+
+<!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" v-for="movie in nowMovies" :key="movie.id">
+      <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" class="d-block w-30" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
+<!-- "@/assets/mfb.jpg" "@/assets/meta.png" -->
+
+	
 		<div class="container">
-		<h1 class="title">NOW MOVIES</h1>
-
-		<div class="row">
-			<div v-for="movie in nowMovies" :key="movie.id" class="card col-2">
-				<div class="card-image" id="cardimg">
-					<figure class="image">
-						<router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
-							<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" class=" is-128x128">
-						</router-link>
-					</figure>
+			<h1 class="title">NOW MOVIES</h1>
+			<div class="row">
+				<div v-for="movie in nowMovies" :key="movie.id" class="card col-2">
+					<div class="card-image">
+						<figure>
+							<router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
+								<div>
+									<img class="cropped2" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" >
+								</div>
+							</router-link>
+						</figure>
+						</div>
+					<div class="card-content" id="cardcontent">
+						<strong>{{ movie.title }}</strong>
+						<p>[{{ movie.release_date }}]</p>
+					</div>
 				</div>
-				<div class="card-content" id="cardcontent">
-					
-					<p>{{ movie.title }}</p>
-					
-					<p>{{ movie.release_date }}</p>
-				</div>
-			
 			</div>
 		</div>
-  </div>
+
+
+	
+
+  <!-- </div>
 		<h1 class='title'>회원</h1>
+	</div> -->
 	</div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+// import bModal from 'bootstrap-vue'
+// import bAlert from 'bootstrap-vue'
 
+// Vue.component('b-modal', bModal)
+// Vue.component('b-alert', bAlert)
 export default {
+
+	data(){
+        return {
+            carousels: [
+                { text: 'Slide 1', color: 'primary' },
+                { text: 'Slide 2', color: 'info' },
+                { text: 'Slide 3', color: 'success' },
+                { text: 'Slide 4', color: 'warning' },
+                { text: 'Slide 5', color: 'danger' }
+            ]
+        }
+    },
 	computed: {
 		...mapGetters(['nowMovies'])
 	},
 
 	methods:{
 		...mapActions(['fetchNowMovies']),
-		info(value) {
-			this.test = value
-		},
+		// info(value) {
+		// 	this.test = value
+		// },
 	},
 	created(){
 		this.fetchNowMovies()
@@ -77,12 +126,25 @@ export default {
 </script>
 	
 <style>
-#cardimg{
+/* #cardimg{
 	padding: auto;
 	height:100px;
-}
+} */
 #cardcontent{
 	padding: 0;
 	height:100px;
 }
+/* .caro{
+	background-color: black;
+	height: 500px;
+}
+.movie-carousel{
+	height: 200px;
+} */
+.cropped2 {
+	width: 100px; 
+	height: 140px; 
+	overflow: hidden;
+}
+	
 </style>

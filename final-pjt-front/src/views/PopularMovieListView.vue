@@ -4,9 +4,11 @@
 		<div class="row">
 			<div v-for="movie in popularMovies" :key="movie.id" class="card col-3">
 				<div class="card-image">
-					<figure class="image">
+					<figure >
 						<router-link :to="{ name: 'movie', params: {movieId: movie.id} }">
-							<img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="movie poster" class=" is-128x128">
+							<div>
+								<img class="cropped" :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`" alt="movie poster">
+							</div>
 						</router-link>
 					</figure>
 				</div>
@@ -75,6 +77,10 @@ export default {
 </script>
 	
 <style>
-
+.cropped {
+	width: 180px; 
+	height: 205px; 
+	overflow: hidden;
+}
 	
 </style>

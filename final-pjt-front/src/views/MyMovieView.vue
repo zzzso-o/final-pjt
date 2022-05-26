@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    
     <movie-recommend></movie-recommend>
     <h2>{{ currentUser.username }}님을 위한 추천영화 !</h2>
   </div>
