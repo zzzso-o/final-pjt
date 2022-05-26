@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404, render, get_object_or_404
+from django.shortcuts import get_list_or_404, get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -11,28 +11,18 @@ from django.contrib.auth import get_user_model
 
 # 인기영화 리스트 조회(GET)
 @api_view(['GET'])
-def popular_movies(requests):
+def popular_movies(request):
     movies = get_list_or_404(Movie)
     serializers = MovieListSerializer(movies, many=True)
     return Response(serializers.data)
 
 # 인기영화 상세 조회(GET)
 @api_view(['GET'])
-def movie_detail(requests, movie_pk):
+def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = MovieSerializer(movie)
     return Response(serializer.data)
 
-
-# 영화 평점 생성(POST)
-@api_view(['POST',])
-def movie_comment_create(request, article_pk):
-    movie = get_object_or_404(Movie, pk=article_pk)
-
-    serializer = CommentSerializer(data=request.data)
-    if serializer.is_valid(raise_exception=True):
-        serializer.save(user=request.user, movie=movie)
-        return Response(serializer.data)
 
 
 @api_view(['POST'])
@@ -49,6 +39,21 @@ def like_movie(request, movie_pk):
         return Response(serializer.data)
 
 
+
+# 영화 평점 생성(POST)
+@api_view(['POST',])
+def movie_comment_create(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(movie=movie, user=request.user)
+        reviews = movie.reviews.all()
+        serializer = CommentSerializer(reviews, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
 # 영화 평점 수정, 삭제(PUT, DELETE)
 @api_view(['PUT', 'DELETE',])
 def movie_comment_update_delete(request, movie_pk, comment_pk):
@@ -56,14 +61,18 @@ def movie_comment_update_delete(request, movie_pk, comment_pk):
     comment = get_object_or_404(MovieComment, pk=comment_pk)
 
     def movie_comment_update():
-        serializer = CommentSerializer(instance=comment, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
+        if request.user == comment.user:
+            serializer = CommentSerializer(instance=comment, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(serializer.data)
 
     def movie_comment_delete():
-        comment.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        if request.user == comment.user:
+            comment.delete()
+            reviews = movie.reviews.all()
+            serializer = CommentSerializer(reviews, many=True)
+            return Response(serializer.data)
 
     if request.method == 'PUT':
         return movie_comment_update()

@@ -20,9 +20,9 @@ class Movie(models.Model):
     #     return self.movie_title
 
 class MovieComment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # user : comment 1:N 외래키
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='reviews')
     # movie : comment 1:N 외래키
    
     movie_comment_content = models.CharField(max_length=100)
