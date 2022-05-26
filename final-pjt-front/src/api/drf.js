@@ -1,8 +1,10 @@
+ /* eslint-disable */
 const HOST = 'http://localhost:8000/api/v1/'
 
 const ACCOUNTS = 'accounts/'
 const ARTICLES = 'articles/'
 const COMMENTS = 'comments/'
+const MOVIES = 'movies/'
 
 export default {
   accounts: {
@@ -10,7 +12,6 @@ export default {
     logout: () => HOST + ACCOUNTS + 'logout/',
     signup: () => HOST + ACCOUNTS + 'signup/',
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
-
   },
   articles: {
     articles: () => HOST + ARTICLES,
@@ -20,5 +21,12 @@ export default {
     comment: (articlePk, commentPk) =>
       HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
   },
+  movies:{
+    movies: () => HOST + MOVIES,
+    movie: movieId => HOST + MOVIES + `${movieId}/`,
+    moviecomments: movieId => HOST + MOVIES + `${movieId}/` + COMMENTS,
+    comment: (movieId, commentPk) =>
+      HOST + MOVIES + `${movieId}/` + COMMENTS + `${commentPk}/`
+  }
 
 }
