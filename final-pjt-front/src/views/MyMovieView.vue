@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    {{ profile}}
     <!-- <movie-recommend></movie-recommend> -->
     <h2 class="title">🧍‍♂️  {{ currentUser.username }}님을 위한 추천영화 !</h2>
     
@@ -47,7 +48,7 @@
       </li>
     </ul>
     </div>
-    <h2 class="title">{{profile.username }} 님이 평점을 남긴 영화 </h2>
+    <h2 class="title">{{ profile.username }} 님이 평점을 남긴 영화 </h2>
     
     <div class="container box">
       comment 확인하러 가기 ! 

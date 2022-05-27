@@ -14,7 +14,7 @@ class Movie(models.Model):
     poster_path = models.CharField(max_length=100)
     vote_average = models.FloatField()
     genres = models.ManyToManyField(Genre, related_name='movies')
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='movies')
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_users')
 
     # like : movie M:N 외래키
 
@@ -22,7 +22,7 @@ class Movie(models.Model):
     #     return self.movie_title
 
 class MovieComment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,related_name='comment_user' )
     # user : comment 1:N 외래키
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
     # movie : comment 1:N 외래키

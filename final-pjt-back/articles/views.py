@@ -75,12 +75,12 @@ def article_detail_update_delete(request, article_pk):
 def like_article(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     user = request.user
-    if article.like_users.filter(pk=user.pk).exists():
-        article.like_users.remove(user)
+    if article.article_likes.filter(pk=user.pk).exists():
+        article.article_likes.remove(user)
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
     else:
-        article.like_users.add(user)
+        article.article_likes.add(user)
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
 

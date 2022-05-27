@@ -44,14 +44,14 @@ def movie_comment_create(request, movie_pk,):
     comments = movie.comments.all()
     serializer = CommentSerializer(data=request.data)
 
-    if comments.filter(user_id=user.pk).exists(): # 이미 댓글을 남긴 사용자라면
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-    else:
-        if serializer.is_valid(raise_exception=True):
-            serializer.save(movie=movie, user=request.user)
-            # comments = movie.comments.all()
-            serializer = CommentSerializer(comments, many=True)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    # if comments.filter(user_id=user.pk).exists(): # 이미 댓글을 남긴 사용자라면
+    #     return Response(status=status.HTTP_400_BAD_REQUEST)
+    # else:
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(movie=movie, user=request.user)
+        comments = movie.comments.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 # 영화 평점 수정, 삭제(PUT, DELETE)
@@ -70,8 +70,8 @@ def movie_comment_update_delete(request, movie_pk, comment_pk):
     def movie_comment_delete():
         if request.user == comment.user:
             comment.delete()
-            reviews = movie.reviews.all()
-            serializer = CommentSerializer(reviews, many=True)
+            comments = movie.comments.all()
+            serializer = CommentSerializer(comments, many=True)
             return Response(serializer.data)
 
     if request.method == 'PUT':
