@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    {{ profile}}
+    
     <!-- <movie-recommend></movie-recommend> -->
     <h2 class="title">🧍‍♂️  {{ currentUser.username }}님을 위한 추천영화 !</h2>
     
